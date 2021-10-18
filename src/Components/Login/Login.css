@@ -1,6 +1,16 @@
-.btn-facebook {
-  background: #405D9D;
-  border: none;
+.login-title {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-form-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
 }
 
 .nodecoration {

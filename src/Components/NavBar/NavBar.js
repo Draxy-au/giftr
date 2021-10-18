@@ -23,10 +23,6 @@ const Styles = styled.div`
     }
   }
 
-  .tester {
-    align-items: flex-content-end;
-  }
-
   .navbar-brand, .navbar-nav, .nav-link, .navbar-collapse {
     color: #bbb;
   
