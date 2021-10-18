@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
