@@ -16,7 +16,7 @@ export default function Login() {
       </div>
       <div className="login-form-parent">
         <Form className="login-form">
-          <Form.Group className="m-3" controlId="formBasicEmail">
+          <Form.Group className="m-3" controlId="loginEmail">
             <Form.Label>Email address</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text>{emailIcon}</InputGroup.Text>
@@ -24,14 +24,14 @@ export default function Login() {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="m-3" controlId="formBasicPassword">
+          <Form.Group className="m-3" controlId="loginPassword">
             <Form.Label>Password</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text>{passwordIcon}</InputGroup.Text>
               <Form.Control type="password" placeholder="Password" />
             </InputGroup>
           </Form.Group>
-          <Form.Group className="m-3" controlId="formBasicSubmit">
+          <Form.Group className="m-3" controlId="loginSubmit">
             <Button className="w-100" variant="primary" type="submit">
               Login
             </Button>

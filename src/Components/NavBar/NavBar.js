@@ -48,7 +48,7 @@ export default function NavigationBar() {
   return (
     <Styles>
       <Navbar variant="dark" expand="lg" expanded={expanded}>
-        <Navbar.Brand><Link className="brand-link" onClick={closeNav} to="/">Giftr {giftIcon}</Link></Navbar.Brand>
+        <Navbar.Brand><Link className="brand-link" onClick={closeNav} to="/">GIFTr {giftIcon}</Link></Navbar.Brand>
         <Navbar.Toggle onClick={navToggle} />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">

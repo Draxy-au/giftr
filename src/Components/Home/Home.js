@@ -3,7 +3,7 @@ import React from "react";
 export default function Home() {
   return (
     <>
-      <h1>Giftr</h1>
+      <h1>GIFTr</h1>
     </>
   );
 }
