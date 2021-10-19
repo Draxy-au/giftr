@@ -7,6 +7,7 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import NoMatch from "./Components/NoMatch/NoMatch";
 import { Jumbo } from "./Components/Jumbo/Jumbo";
+import { YourList } from "./Components/YourList/YourList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="App">
         <NavigationBar />
         <Jumbo />
+        
         <Switch>
           <Route path="/login">
             <Login />
@@ -25,7 +27,7 @@ function App() {
             TODO: GIFT LISTS
           </Route>
           <Route path="/yourlists">
-            TODO: YOUR LISTS
+            <YourList />
           </Route>
           <Route exact path="/">
             <Home />
