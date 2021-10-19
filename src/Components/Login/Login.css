@@ -13,6 +13,10 @@
   padding-top: 20px;
 }
 
+.login-form {
+  width: 600px;
+}
+
 .nodecoration {
   text-decoration: none;
 }

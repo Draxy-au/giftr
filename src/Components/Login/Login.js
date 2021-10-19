@@ -15,8 +15,8 @@ export default function Login() {
         <h1>Login</h1>
       </div>
       <div className="login-form-parent">
-        <Form className="col-4">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form className="login-form">
+          <Form.Group className="m-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text>{emailIcon}</InputGroup.Text>
@@ -24,23 +24,24 @@ export default function Login() {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="m-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <InputGroup className="mb-3">
-            <InputGroup.Text>{passwordIcon}</InputGroup.Text>
+              <InputGroup.Text>{passwordIcon}</InputGroup.Text>
               <Form.Control type="password" placeholder="Password" />
             </InputGroup>
           </Form.Group>
-
-          <Button className="col-12" variant="primary" type="submit">
-            Login
-          </Button>
-          <p className="text-muted font-weight-bold text-center">
-            Need an Account?{" "}
-            <Link to="/register" className="text-primary ml-2 nodecoration">
-              Register
-            </Link>
-          </p>
+          <Form.Group className="m-3" controlId="formBasicSubmit">
+            <Button className="w-100" variant="primary" type="submit">
+              Login
+            </Button>
+            <p className="text-muted font-weight-bold text-center">
+              Need an Account?{" "}
+              <Link to="/register" className="text-primary ml-2 nodecoration">
+                Register
+              </Link>
+            </p>
+          </Form.Group>
         </Form>
       </div>
     </>

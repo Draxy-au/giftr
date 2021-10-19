@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function Home() {
   return (
-    <div>
-      TODO: HOME
-    </div>
-  )
+    <>
+      <h1>Giftr</h1>
+    </>
+  );
 }
