@@ -53,7 +53,7 @@ export default function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/howitworks">How It Works</Link></Nav.Item>
-            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">Gift Lists</Link></Nav.Item>
+            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">GIFTr Lists</Link></Nav.Item>
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/yourlists">Your Lists</Link></Nav.Item>
           </Nav>
           <Nav className="ms-auto">

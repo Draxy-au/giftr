@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import React from 'react'
+import { Container, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCandyCane,
@@ -12,30 +12,28 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import {Jumbo} from "../Jumbo/Jumbo";
 
-import { Link } from "react-router-dom";
+import "./GiftLists.css";
 
-import "./YourList.css";
+export const GiftLists = () => {
 
-export const YourList = () => {
   const xmasIcon = <FontAwesomeIcon icon={faCandyCane} />;
   const bdayIcon = <FontAwesomeIcon icon={faBirthdayCake} />;
   const wishIcon = <FontAwesomeIcon icon={faPray} />;
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
 
-
   return (
     <>
-    <Jumbo />
+      <Jumbo />
     <div className="yourlist-container">
       <div className="yourlist">
         <div className="yourlist-title">
-          <h1>Your Lists</h1>
+          <h1>GIFTr Lists</h1>
+        </div>
+        <div>
+          <p>Here you will find the GIFTr lists that you have subscribed to.</p>
         </div>
         <Container className="d-flex flex-column">
-          <Link to="/createnewlist">
-            <Button className="btnCreateNewList mt-2">Create a New List</Button>
-          </Link>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -82,5 +80,5 @@ export const YourList = () => {
       </div>
     </div>
     </>
-  );
-};
+  )
+}

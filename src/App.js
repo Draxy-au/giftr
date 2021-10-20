@@ -9,12 +9,15 @@ import NoMatch from "./Components/NoMatch/NoMatch";
 import { YourList } from "./Components/YourList/YourList";
 import HowItWorks from "./Components/HowItWorks/HowItWorks";
 import { CreateNewList } from "./Components/CreateNewList/CreateNewList";
+import { GiftLists } from "./Components/GiftLists/GiftLists";
+import { Footer } from "./Components/Footer/Footer";
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App flex-shrink-0">
         <NavigationBar />
+        <div className="lead">
         <Switch>
           <Route path="/login">
             <Login />
@@ -26,7 +29,7 @@ function App() {
             <Register />
           </Route>
           <Route path="/giftlists">
-            TODO: GIFT LISTS
+            <GiftLists />
           </Route>
           <Route path="/yourlists">
             <YourList />
@@ -41,6 +44,10 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
+        </div>
+        <footer className="fixFooter">
+          <Footer />
+        </footer>
       </div>
     </Router>
   );

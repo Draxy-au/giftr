@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
-import DatePicker from "react-date-picker";
+import { Button, Container } from "react-bootstrap";
 import { Jumbo } from "../Jumbo/Jumbo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,37 +7,25 @@ import {
   faBirthdayCake,
   faPray,
   faGifts,
-  faFeatherAlt,
-  faCalendarAlt,
-  faInfo
+
 } from "@fortawesome/free-solid-svg-icons";
 import { faGem } from "@fortawesome/free-regular-svg-icons";
 
 import "./CreateNewList.css";
+import { NewListForm } from "./NewListForm/NewListForm";
 
 export const CreateNewList = () => {
   const xmasIcon = <FontAwesomeIcon icon={faCandyCane} />;
   const bdayIcon = <FontAwesomeIcon icon={faBirthdayCake} />;
   const wishIcon = <FontAwesomeIcon icon={faPray} />;
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
-  const giftsIcon = <FontAwesomeIcon icon={faGifts} />;
-  const listIcon = <FontAwesomeIcon icon={faFeatherAlt} />;
-  const calIcon = <FontAwesomeIcon icon={faCalendarAlt} />;
-  const descIcon = <FontAwesomeIcon icon={faInfo} />;
+  const otherIcon = <FontAwesomeIcon icon={faGifts} />;
+
 
   const [listType, setListType] = useState("notset");
-  const [formName, setFormName] = useState("");
-  const [formDesc, setFormDesc] = useState("");
-  const [formDate, setFormDate] = useState(new Date());
+
  
-  const handleFormName = (e) => {
-    setFormName(e.target.value);
-  }
-
-  const handleFormDesc = (e) => {
-    setFormDesc(e.target.value);
-  }
-
+ 
   const handleBtnClick = (type) => {
     setListType(type);
   };
@@ -47,7 +34,7 @@ export const CreateNewList = () => {
   return (
     <>
       <Jumbo />
-      <Container className="create-new-list-container">
+      <div className="create-new-list-container">
         <div className="create-new-list">
           {listType === "notset" && (
             <div className="create-new-list-title">
@@ -56,7 +43,7 @@ export const CreateNewList = () => {
           )}
           <Container className="d-flex flex-column">
             {listType === "notset" && (
-              <Container className="d-flex flex-row justify-content-center">
+              <Container className="d-flex flex-row flex-wrap alist-icons">
                 <div className="alist-type flex-col">
                   <Button
                     className="alist-button"
@@ -64,7 +51,7 @@ export const CreateNewList = () => {
                   >
                     {xmasIcon}
                   </Button>
-                  <div>Christmas</div>
+                  <div className="alist-text">Christmas</div>
                 </div>
                 <div className="alist-type flex-col">
                   <Button
@@ -73,7 +60,7 @@ export const CreateNewList = () => {
                   >
                     {bdayIcon}
                   </Button>
-                  <div>Birthday</div>
+                  <div className="alist-text">Birthday</div>
                 </div>
                 <div className="alist-type flex-col">
                   <Button
@@ -82,7 +69,7 @@ export const CreateNewList = () => {
                   >
                     {wishIcon}
                   </Button>
-                  <div>Wish</div>
+                  <div className="alist-text">Wish</div>
                 </div>
                 <div className="alist-type flex-col">
                   <Button
@@ -91,84 +78,44 @@ export const CreateNewList = () => {
                   >
                     {wedIcon}
                   </Button>
-                  <div>Wedding</div>
+                  <div className="alist-text">Wedding</div>
                 </div>
                 <div className="alist-type flex-col">
                   <Button
                     className="alist-button"
                     onClick={() => handleBtnClick("other")}
                   >
-                    {giftsIcon}
+                    {otherIcon}
                   </Button>
-                  <div>Other</div>
+                  <div className="alist-text">Other</div>
                 </div>
               </Container>
             )}
 
             {listType === "xmas" && (
-              <Container className="chosen-header-container">
-                <div className="chosen-title-container">
-                  <div className="chosen-icon">{xmasIcon}</div>
-                  <div className="chosen-title">Christmas List</div>
-                </div>
-                <Form className="list-form">
-                    <Form.Group className="m-3">
-                      <Form.Label>List Name</Form.Label>
-                      <InputGroup className="mb-3">
-                        <InputGroup.Text className="text-icon">{listIcon}</InputGroup.Text>
-                        <Form.Control
-                          id="Form-ListName"
-                          type="text"
-                          maxLength="60"
-                          placeholder="Enter a descriptive name"
-                          value={formName}
-                          onChange={handleFormName}
-                          required
-                        />
-                      </InputGroup>
-                    </Form.Group>
+              <NewListForm icon={xmasIcon} title={"Christmas Gift"} />
+            )}
 
-                    <Form.Group className="m-3">
-                      <Form.Label>Please describe this list for guests</Form.Label>
-                      <InputGroup className="mb-3">
-                        <InputGroup.Text className="text-icon">{descIcon}</InputGroup.Text>
-                        <Form.Control
-                          id="Form-ListDesc"
-                          type="textarea"
-                          maxLength="350"
-                          placeholder="To celebrate..."
-                          value={formDesc}
-                          onChange={handleFormDesc}
-                        />
-                      </InputGroup>
-                    </Form.Group>
+            {listType === "bday" && (
+              <NewListForm icon={bdayIcon} title={"Birthday Gift"} />
+            )}
 
-                    <Form.Group className="m-3">
-                      <Form.Label>What date will the list close?</Form.Label>                      
-                      <InputGroup className="mb-3">
-                        <InputGroup.Text className="text-icon">{calIcon}</InputGroup.Text>
-                        <DatePicker 
-                          className="form-control"
-                          onChange={setFormDate}
-                          value={formDate}
-                          calendarIcon={null}
-                          clearIcon={null}
-                          format="dd/MM/yyyy"
-                          minDate={new Date()}
-                          required
-                        />                        
-                      </InputGroup>
-                      <Button className="btnCreateNewList w-100 mt-3">Create New {} List!</Button>                      
-                    </Form.Group>
-
-                  </Form>
-              </Container>
+            {listType === "wish" && (
+              <NewListForm icon={wishIcon} title={"Wish Gift"} />
             )}
             
+            {listType === "wed" && (
+              <NewListForm icon={wedIcon} title={"Wedding Gift"} />
+            )}
+
+            {listType === "other" && (
+              <NewListForm icon={otherIcon} title={"Gift"} />
+            )}
+
 
           </Container>
         </div>
-      </Container>
+      </div>
     </>
   );
 };
