@@ -39,40 +39,40 @@ export const YourList = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th className="table-date-icon"></th>
-                <th className="table-date-name">List Name</th>
+                <th className="table-icon"></th>
+                <th className="table-name">List Name</th>
                 <th className="table-date-created">Date Created</th>
                 <th className="table-date-closing">Date Closing</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="table-date-icon">{xmasIcon}</td>
-                <td className="table-date-name">Xmas List</td>
+                <td className="table-icon">{xmasIcon}</td>
+                <td className="table-name">Xmas List</td>
                 <td className="table-date-created">21/10/2021</td>
                 <td className="table-date-closing">25/12/2021</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{bdayIcon}</td>
-                <td className="table-date-name">Birthday List</td>
+                <td className="table-icon">{bdayIcon}</td>
+                <td className="table-name">Birthday List</td>
                 <td className="table-date-created">21/10/2021</td>
                 <td className="table-date-closing">02/08/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{wishIcon}</td>
-                <td className="table-date-name">Wish List</td>
+                <td className="table-icon">{wishIcon}</td>
+                <td className="table-name">Wish List</td>
                 <td className="table-date-created">21/10/2021</td>
                 <td className="table-date-closing">21/10/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{wedIcon}</td>
-                <td className="table-date-name">Wedding List</td>
+                <td className="table-icon">{wedIcon}</td>
+                <td className="table-name">Wedding List</td>
                 <td className="table-date-created">21/10/2021</td>
                 <td className="table-date-closing">21/10/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{otherIcon}</td>
-                <td className="table-date-name">Gift List</td>
+                <td className="table-icon">{otherIcon}</td>
+                <td className="table-name">Gift List</td>
                 <td className="table-date-created">21/10/2021</td>
                 <td className="table-date-closing">21/10/2022</td>
               </tr>

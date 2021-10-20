@@ -48,11 +48,11 @@
   box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
 }
 
-.table-date-name{
+.table-name{
   font-weight: bold;
 }
 
-.table-date-icon{
+.table-icon{
   width: 50px;
   text-align: center;
 }

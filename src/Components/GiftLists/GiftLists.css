@@ -1,0 +1,59 @@
+.table-giftr-name{
+  font-weight: bold;
+}
+
+.table-giftr-icon{
+  width: 50px;
+  text-align: center;
+}
+
+.table-giftr-chosen {
+  width: 110px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.table-giftr-created {
+  width: 110px;
+  text-align: center;
+}
+
+.table-giftr-closing {
+  width: 110px;
+  text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+
+  .table-giftr-created {
+    display:none;
+  }
+  
+  .table-giftr-closing {
+    display:none;
+  }
+  
+  .table-giftr-chosen {
+    width: 50px;
+    text-align: center;
+    font-weight: normal;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .table-giftr-created {
+    display:none;
+  }
+
+  .table-giftr-closing {
+    display:none;
+  }
+}

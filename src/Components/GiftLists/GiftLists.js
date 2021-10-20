@@ -5,7 +5,9 @@ import {
   faCandyCane,
   faBirthdayCake,
   faPray,
-  faGifts
+  faGifts,
+  faCheck, 
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGem
@@ -21,6 +23,11 @@ export const GiftLists = () => {
   const wishIcon = <FontAwesomeIcon icon={faPray} />;
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
+  const checkIcon = <FontAwesomeIcon icon={faCheck} />;
+  const crossIcon = <FontAwesomeIcon icon={faTimes} />;
+
+  const stylered = { color: "red" }
+  const stylegreen = { color: "green" }
 
   return (
     <>
@@ -37,42 +44,48 @@ export const GiftLists = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th className="table-date-icon"></th>
-                <th className="table-date-name">List Name</th>
-                <th className="table-date-created">Date Created</th>
-                <th className="table-date-closing">Date Closing</th>
+                <th className="table-giftr-icon"></th>
+                <th className="table-giftr-name">List Name</th>
+                <th className="table-giftr-created">Gift Sorted</th>
+                <th className="table-giftr-created">Date Created</th>
+                <th className="table-giftr-closing">Date Closing</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="table-date-icon">{xmasIcon}</td>
-                <td className="table-date-name">Xmas List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">25/12/2021</td>
+                <td className="table-giftr-icon">{xmasIcon}</td>
+                <td className="table-giftr-name">Xmas List</td>
+                <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
+                <td className="table-giftr-created">21/10/2021</td>
+                <td className="table-giftr-closing">25/12/2021</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{bdayIcon}</td>
-                <td className="table-date-name">Birthday List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">02/08/2022</td>
+                <td className="table-giftr-icon">{bdayIcon}</td>
+                <td className="table-giftr-name">Birthday List</td>
+                <th className="table-giftr-chosen red">{crossIcon}</th>
+                <td className="table-giftr-created">21/10/2021</td>
+                <td className="table-giftr-closing">02/08/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{wishIcon}</td>
-                <td className="table-date-name">Wish List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
+                <td className="table-giftr-icon">{wishIcon}</td>
+                <td className="table-giftr-name">Wish List</td>
+                <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
+                <td className="table-giftr-created">21/10/2021</td>
+                <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{wedIcon}</td>
-                <td className="table-date-name">Wedding List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
+                <td className="table-giftr-icon">{wedIcon}</td>
+                <td className="table-giftr-name">Wedding List</td>
+                <th className="table-giftr-chosen red">{crossIcon}</th>
+                <td className="table-giftr-created">21/10/2021</td>
+                <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
-                <td className="table-date-icon">{otherIcon}</td>
-                <td className="table-date-name">Gift List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
+                <td className="table-giftr-icon">{otherIcon}</td>
+                <td className="table-giftr-name">Gift List</td>
+                <th className="table-giftr-chosen"  style={stylered}>{crossIcon}</th>
+                <td className="table-giftr-created">21/10/2021</td>
+                <td className="table-giftr-closing">21/10/2022</td>
               </tr>
             </tbody>
           </Table>
