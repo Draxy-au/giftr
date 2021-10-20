@@ -54,35 +54,35 @@ export const GiftLists = () => {
             <tbody>
               <tr>
                 <td className="table-giftr-icon">{xmasIcon}</td>
-                <td className="table-giftr-name">Xmas List</td>
+                <td className="table-giftr-name">Emma's Xmas List</td>
                 <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">25/12/2021</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{bdayIcon}</td>
-                <td className="table-giftr-name">Birthday List</td>
+                <td className="table-giftr-name">Greg's Birthday List</td>
                 <th className="table-giftr-chosen red">{crossIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">02/08/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{wishIcon}</td>
-                <td className="table-giftr-name">Wish List</td>
+                <td className="table-giftr-name">Charles' Wish List</td>
                 <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{wedIcon}</td>
-                <td className="table-giftr-name">Wedding List</td>
+                <td className="table-giftr-name">Rhonda and Ketut Wedding List</td>
                 <th className="table-giftr-chosen red">{crossIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{otherIcon}</td>
-                <td className="table-giftr-name">Gift List</td>
+                <td className="table-giftr-name">John's Gift List</td>
                 <th className="table-giftr-chosen"  style={stylered}>{crossIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
