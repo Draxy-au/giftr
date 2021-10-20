@@ -35,7 +35,7 @@ export const Jumbo = ({page}) => (
         <Jumbotron fluid className="jumbo desktop">
           <div className="overlay"></div>
           <Container>
-            <h1>GIFTr</h1>
+            
           </Container>
         </Jumbotron>
       }
@@ -46,8 +46,8 @@ export const Jumbo = ({page}) => (
               
                 <h1>GIFTr is the simple way to create and manage gift lists</h1>
                 <div>
-                  <Button className="btnCreateGiftList">Create Gift List</Button>
-                  <Button className="btnFindGiftList">Find Gift List</Button>
+                  <Button className="btnCreateGiftList">Create A Gift List</Button>
+                  <Button className="btnFindGiftList">How Does It Work</Button>
                 </div>
               
             </Container>

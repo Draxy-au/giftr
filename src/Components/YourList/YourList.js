@@ -30,7 +30,7 @@ export const YourList = () => {
     <div className="yourlist-container">
       <div className="yourlist">
         <div className="yourlist-title">
-          <h1>Your Lists</h1>
+          <h1>Your GIFTr Lists</h1>
         </div>
         <Container className="d-flex flex-column">
           <Link to="/createnewlist">
