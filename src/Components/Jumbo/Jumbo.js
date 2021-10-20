@@ -1,5 +1,6 @@
 import React from "react";
 import { Jumbotron, Container, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import jumboImage from "../../assets/jumboImage2.png";
@@ -46,8 +47,8 @@ export const Jumbo = ({page}) => (
               
                 <h1>GIFTr is the simple way to create and manage gift lists</h1>
                 <div>
-                  <Button className="btnCreateGiftList">Create A Gift List</Button>
-                  <Button className="btnFindGiftList">How Does It Work</Button>
+                  <Link to="/createnewlist"><Button className="btnCreateGiftList">Create A Gift List</Button></Link>
+                  <Link to="/howitworks"><Button className="btnFindGiftList">How Does It Work</Button></Link>
                 </div>
               
             </Container>
