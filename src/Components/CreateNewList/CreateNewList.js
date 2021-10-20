@@ -119,6 +119,7 @@ export const CreateNewList = () => {
                         <Form.Control
                           id="Form-ListName"
                           type="text"
+                          maxLength="60"
                           placeholder="Enter a descriptive name"
                           value={formName}
                           onChange={handleFormName}
@@ -128,13 +129,14 @@ export const CreateNewList = () => {
                     </Form.Group>
 
                     <Form.Group className="m-3">
-                      <Form.Label>Please describe this list</Form.Label>
+                      <Form.Label>Please describe this list for guests</Form.Label>
                       <InputGroup className="mb-3">
                         <InputGroup.Text className="text-icon">{descIcon}</InputGroup.Text>
                         <Form.Control
                           id="Form-ListDesc"
                           type="textarea"
-                          placeholder="A brief description for guests"
+                          maxLength="350"
+                          placeholder="To celebrate..."
                           value={formDesc}
                           onChange={handleFormDesc}
                         />
