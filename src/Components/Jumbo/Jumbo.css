@@ -1,16 +1,94 @@
 .desktop {
   display: flex;
+  padding: 0 15px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header-content {
+  height: 96vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
 }
 
 .overlay {
   background-color: #000;
-  opacity: 0.5;
+  opacity: 0.6;
   position: absolute;
+  height: 100%;
+  width: 100%;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: -1;
+  
+}
+
+.btnCreateGiftList {
+  margin: 20px 5px;
+  border-radius: 40px;
+  font-weight: bold;
+  background-color: rgb(129, 113, 94);
+  border-color: rgb(167, 146, 122);
+}
+
+.btnCreateGiftList:hover {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+}
+
+.btnCreateGiftList:active {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCreateGiftList:visited {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCreateGiftList:focus, .btnCreateGiftList:active:focus {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnFindGiftList {
+  margin: 20px 5px;
+  border-radius: 40px;
+  background-color: rgb(255, 255, 255);
+  color:rgb(133, 93, 44);
+  font-weight: bold;
+  border-color: rgb(167, 146, 122);
+}
+
+.btnFindGiftList:hover {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+}
+
+.btnFindGiftList:active {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnFindGiftList:visited {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnFindGiftList:focus, .btnFindGiftList:active:focus {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
 }
 
 @media screen and (max-width: 1110px) {

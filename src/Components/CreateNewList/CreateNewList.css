@@ -1,0 +1,77 @@
+.create-new-list-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-new-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+}
+
+.create-new-list-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alist-type {
+  min-height: 50px;
+  min-width: 50px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.alist-button {
+  height: 100px;
+  width: 100px;
+  font-size: 3em;
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+}
+
+.alist-button:hover {
+  background-color: rgb(104, 79, 48);
+  border-color: rgb(165, 112, 51);
+}
+
+.alist-button:active {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCreateNewList {
+  align-self: flex-start;
+  background-color: rgb(129, 113, 94);
+  border-color: rgb(167, 146, 122);
+}
+
+.btnCreateNewList:hover {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+}
+
+.btnCreateNewList:active {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCreateNewList:visited {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCreateNewList:focus, .btnCreateNewList:active:focus {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}

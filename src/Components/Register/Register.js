@@ -6,6 +6,7 @@ import {
   faEnvelope,
   faUserLock,
 } from "@fortawesome/free-solid-svg-icons";
+import {Jumbo} from "../Jumbo/Jumbo";
 
 import "./Register.css";
 import { Link } from "react-router-dom";
@@ -17,6 +18,7 @@ export default function Register() {
 
   return (
     <>
+      <Jumbo />
       <div className="register-title">
         <h1>Register</h1>
       </div>

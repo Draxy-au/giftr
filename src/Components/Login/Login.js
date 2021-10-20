@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
+import {Jumbo} from "../Jumbo/Jumbo";
 
 import "./Login.css";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ export default function Login() {
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;
   return (
     <>
+      <Jumbo />
       <div className="login-title">
         <h1>Login</h1>
       </div>

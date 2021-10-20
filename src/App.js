@@ -6,19 +6,21 @@ import NavigationBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import NoMatch from "./Components/NoMatch/NoMatch";
-import { Jumbo } from "./Components/Jumbo/Jumbo";
 import { YourList } from "./Components/YourList/YourList";
+import HowItWorks from "./Components/HowItWorks/HowItWorks";
+import { CreateNewList } from "./Components/CreateNewList/CreateNewList";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <NavigationBar />
-        <Jumbo />
-        
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/createnewlist">
+            <CreateNewList />
           </Route>
           <Route path="/register">
             <Register />
@@ -28,6 +30,9 @@ function App() {
           </Route>
           <Route path="/yourlists">
             <YourList />
+          </Route>
+          <Route path="/howitworks">
+            <HowItWorks />
           </Route>
           <Route exact path="/">
             <Home />

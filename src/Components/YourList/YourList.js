@@ -9,25 +9,32 @@ import {
 import {
   faGem
 } from "@fortawesome/free-regular-svg-icons";
+import {Jumbo} from "../Jumbo/Jumbo";
 
 //import { Link } from "react-router-dom";
 
 import "./YourList.css";
+import { Link } from "react-router-dom";
 
 export const YourList = () => {
   const xmasIcon = <FontAwesomeIcon icon={faCandyCane} />;
   const bdayIcon = <FontAwesomeIcon icon={faBirthdayCake} />;
   const wishIcon = <FontAwesomeIcon icon={faPray} />;
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
+
+
   return (
+    <>
+    <Jumbo />
     <div className="yourlist-container">
       <div className="yourlist">
         <div className="yourlist-title">
           <h1>Your Lists</h1>
         </div>
         <Container className="d-flex flex-column">
-          <Button className="btnCreateNewList mt-2">Create a New List</Button>
-
+          <Link to="/createnewlist">
+            <Button className="btnCreateNewList mt-2">Create a New List</Button>
+          </Link>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -67,5 +74,6 @@ export const YourList = () => {
         </Container>
       </div>
     </div>
+    </>
   );
 };
