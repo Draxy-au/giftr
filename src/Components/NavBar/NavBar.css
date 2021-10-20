@@ -5,3 +5,8 @@
 .navbar-custom2 {
   height: 40px;
 }
+
+.loginlink {
+  color: #fff !important;
+  font-weight: bold;
+}

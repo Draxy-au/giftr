@@ -58,7 +58,7 @@ export default function NavigationBar() {
           </Nav>
           <Nav className="ms-auto">
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/register">Register</Link></Nav.Item>
-            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/login">Login</Link></Nav.Item>
+            <Nav.Item><Link className="nav-link loginlink" onClick={closeNav} to="/login">Login</Link></Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
