@@ -27,7 +27,7 @@ export default function Register() {
           <Form.Group className="m-3">
             <Form.Label>Email address</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{emailIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{emailIcon}</InputGroup.Text>
               <Form.Control id="registerEmail" type="email" placeholder="Enter email" />
             </InputGroup>
           </Form.Group>
@@ -35,7 +35,7 @@ export default function Register() {
           <Form.Group className="m-3">
             <Form.Label>Your Name</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{userIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{userIcon}</InputGroup.Text>
               <Form.Control id="registerFName" type="text" placeholder="First name" />
               <Form.Control id="registerLName" className="ms-1" type="text" placeholder="Last name" />
             </InputGroup>
@@ -44,11 +44,11 @@ export default function Register() {
           <Form.Group className="m-3">
             <Form.Label>Password</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{passwordIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{passwordIcon}</InputGroup.Text>
               <Form.Control id="registerPassword" type="password" placeholder="Password" />
             </InputGroup>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{passwordIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{passwordIcon}</InputGroup.Text>
               <Form.Control id="registerConfirm" type="password" placeholder="Confirm password" />
             </InputGroup>
           </Form.Group>

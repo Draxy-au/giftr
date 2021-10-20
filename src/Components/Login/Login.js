@@ -21,7 +21,7 @@ export default function Login() {
           <Form.Group className="m-3" controlId="loginEmail">
             <Form.Label>Email address</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{emailIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{emailIcon}</InputGroup.Text>
               <Form.Control type="email" placeholder="Enter email" />
             </InputGroup>
           </Form.Group>
@@ -29,7 +29,7 @@ export default function Login() {
           <Form.Group className="m-3" controlId="loginPassword">
             <Form.Label>Password</Form.Label>
             <InputGroup className="mb-3">
-              <InputGroup.Text>{passwordIcon}</InputGroup.Text>
+              <InputGroup.Text className="text-icon">{passwordIcon}</InputGroup.Text>
               <Form.Control type="password" placeholder="Password" />
             </InputGroup>
           </Form.Group>
