@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./GiftListCard.css";
 
-export const GiftListCard = ({ id, img, name, desc, price, category }) => {
+export const GiftListCard = ({ id, img, name, desc, price, category, buttonVisible }) => {
 
-  console.log(id);
+  const [showButtons, setShowButtons] = useState(false);
+
+  useEffect(() => {
+    if (buttonVisible.id.toString() === id) {
+      showButtons?setShowButtons(false):setShowButtons(true);
+    }
+    else {
+      setShowButtons(false);
+    }
+    
+  }, [buttonVisible])
 
   return (
     <>
@@ -27,10 +37,12 @@ export const GiftListCard = ({ id, img, name, desc, price, category }) => {
             </div>
           </div>
           <div className="gfc-acard-bot">
-            
-              <button className="btnCoffee btn-acard">Edit</button>
-              <button className="btnCoffee btn-acard-del">Delete</button>
-            
+              { showButtons &&
+                <>
+                  <button className="btnCoffee btn-acard" onClick={() => alert("EDIT")}>Edit</button>
+                  <button className="btnCoffee btn-acard-del" onClick={() => alert("DELETE")}>Delete</button>
+                </>
+              }
           </div>
         </div>
       </div>

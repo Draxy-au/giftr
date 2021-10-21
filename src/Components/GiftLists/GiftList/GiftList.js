@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { Jumbo } from "../../Jumbo/Jumbo";
 
@@ -9,7 +9,18 @@ import stockImage from "../../../assets/temp/StockShoe.png";
 import { GiftListCard } from "./GiftListCard/GiftListCard";
 
 export const GiftList = ({ name }) => {
-  
+  const [buttonVisible, setButtonsVisible] = useState({
+    visible: false,
+    id: 0,
+  });
+
+  const handleCardClick = (id) => {
+    setButtonsVisible({
+      visible: true,
+      id: id,
+    });
+  };
+
   return (
     <>
       <Jumbo />
@@ -27,42 +38,54 @@ export const GiftList = ({ name }) => {
             </ButtonGroup>
           </div>
           <div className="gl-glc">
-            <GiftListCard 
-              name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
+            <div onClick={() => handleCardClick(1)}>
+              <GiftListCard
+                name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
-              id="1" 
-              img={stockImage} 
-              desc="it's a while back since I wrote this, but it
+                id="1"
+                
+                img={stockImage}
+                desc="it's a while back since I wrote this, but it
               doesn't make sense to set a tablecell to 50% of the
               row-height. In my example you can actually leave out the
-              height" 
-              price="1049.99"
-              category="Shoes"
-            />
-            <GiftListCard 
-              name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
+              height"
+                price="1049.99"
+                category="Shoes"
+                buttonVisible={buttonVisible}
+              />
+            </div>
+            <div onClick={() => handleCardClick(2)}>
+              <GiftListCard
+                name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
-              id="1" 
-              img={stockImage} 
-              desc="it's a while back since I wrote this, but it
+                id="2"
+                
+                img={stockImage}
+                desc="it's a while back since I wrote this, but it
               doesn't make sense to set a tablecell to 50% of the
               row-height. In my example you can actually leave out the
-              height" 
-              price="49.99"
-              category="Shoes"
-            />
-            <GiftListCard 
-              name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
+              height"
+                price="49.99"
+                category="Shoes"
+                buttonVisible={buttonVisible}
+              />
+            </div>
+            <div onClick={() => handleCardClick(3)}>
+              <GiftListCard
+                name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
-              id="1" 
-              img={stockImage} 
-              desc="it's a while back since I wrote this, but it
+                id="3"
+                
+                img={stockImage}
+                desc="it's a while back since I wrote this, but it
               doesn't make sense to set a tablecell to 50% of the
               row-height. In my example you can actually leave out the
-              height" 
-              price="49.99"
-              category="Shoes"
-            />
+              height"
+                price="49.99"
+                category="Shoes"
+                buttonVisible={buttonVisible}
+              />
+            </div>
           </div>
         </div>
       </div>
