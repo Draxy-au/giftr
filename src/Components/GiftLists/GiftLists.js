@@ -15,6 +15,7 @@ import {
 import {Jumbo} from "../Jumbo/Jumbo";
 
 import "./GiftLists.css";
+import { useHistory } from 'react-router-dom';
 
 export const GiftLists = () => {
 
@@ -28,6 +29,12 @@ export const GiftLists = () => {
 
   const stylered = { color: "red" }
   const stylegreen = { color: "green" }
+
+  const history = useHistory();
+
+  const handleClickListItem = () => {
+    history.push('/giftlist')
+  }
 
   return (
     <>
@@ -52,13 +59,15 @@ export const GiftLists = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              
+              <tr onClick={() => {handleClickListItem()}}>
                 <td className="table-giftr-icon">{xmasIcon}</td>
                 <td className="table-giftr-name">Emma's Xmas List</td>
                 <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">25/12/2021</td>
               </tr>
+              
               <tr>
                 <td className="table-giftr-icon">{bdayIcon}</td>
                 <td className="table-giftr-name">Greg's Birthday List</td>

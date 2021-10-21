@@ -11,6 +11,7 @@ import HowItWorks from "./Components/HowItWorks/HowItWorks";
 import { CreateNewList } from "./Components/CreateNewList/CreateNewList";
 import { GiftLists } from "./Components/GiftLists/GiftLists";
 import { Footer } from "./Components/Footer/Footer";
+import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/giftlists">
             <GiftLists />
+          </Route>
+          <Route path="/giftlist">
+            <GiftList name="Emma's Xmas List" />
           </Route>
           <Route path="/yourlists">
             <YourList />

@@ -1,0 +1,23 @@
+.gl-glc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media screen and (max-width: 490px) {
+  .btn-ylcard {
+    font-size: 0.70em;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .btn-ylcard {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .btn-ylcard {
+    font-size: 0.5em;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Container, Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -33,15 +33,15 @@ export const Jumbo = ({page}) => (
   <>
     <Styles>
       { !page &&
-        <Jumbotron fluid className="jumbo desktop">
+        <div className="jumbo desktop">
           <div className="overlay"></div>
           <Container>
             
           </Container>
-        </Jumbotron>
+        </div>
       }
       { (page === "Home") && 
-          <Jumbotron fluid className="jumbo-home desktop">
+          <div className="jumbo-home desktop">
             <div className="overlay"></div>
             <Container className="header-content">
               
@@ -52,7 +52,7 @@ export const Jumbo = ({page}) => (
                 </div>
               
             </Container>
-          </Jumbotron>
+          </div>
         
       }
     </Styles>

@@ -34,7 +34,7 @@ export const YourList = () => {
         </div>
         <Container className="d-flex flex-column">
           <Link to="/createnewlist">
-            <Button className="btnCreateNewList mt-2">Create a New List</Button>
+            <Button className="btnCoffee mt-2">Create a New List</Button>
           </Link>
           <Table striped bordered hover>
             <thead>
