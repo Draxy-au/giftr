@@ -113,7 +113,7 @@
   margin:1px;
   background-color: #EBE2D3;
   padding: 5px 5px 0px 5px;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .gfc-icon {
@@ -238,5 +238,43 @@
   }
   .gfc-desc-parent{
     font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .btn-acard-buy {
+    font-size: 0.7em;
+    width: 75px;
+  }
+  .btn-acard-chipin {
+    font-size: 0.7em;
+    width: 75px;
+  }
+  .btn-acard-link {
+    font-size: 0.7em;
+    width: 75px;
+  }
+  .btn-acard-info {
+    font-size: 0.7em;
+    width: 75px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .btn-acard-buy {
+    font-size: 0.6em;
+    width: 65px;
+  }
+  .btn-acard-chipin {
+    font-size: 0.6em;
+    width: 65px;
+  }
+  .btn-acard-link {
+    font-size: 0.6em;
+    width: 65px;
+  }
+  .btn-acard-info {
+    font-size: 0.6em;
+    width: 65px;
   }
 }
