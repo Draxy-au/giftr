@@ -41,12 +41,12 @@ export const Jumbo = ({page}) => (
         </div>
       }
       { (page === "Home") && 
-          <div className="jumbo-home desktop">
+          <div className="jumbo-home">
             <div className="overlay"></div>
             <Container className="header-content">
               
-                <h1>GIFTr is the simple way to create and manage gift lists</h1>
-                <div>
+                <h1 className="home-text">GIFTr is the simple way to create and manage gift lists</h1>
+                <div className="home-buttons">
                   <Link to="/createnewlist"><Button className="btnCreateGiftList">Create A Gift List</Button></Link>
                   <Link to="/howitworks"><Button className="btnFindGiftList">How Does It Work</Button></Link>
                 </div>

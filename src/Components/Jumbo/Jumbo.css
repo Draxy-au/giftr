@@ -91,6 +91,19 @@
   box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
 }
 
+.home-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 @media screen and (max-width: 767px) {
   .desktop {
     display: none;
