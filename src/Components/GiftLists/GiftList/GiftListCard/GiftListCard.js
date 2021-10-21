@@ -11,6 +11,7 @@ export const GiftListCard = ({
   category,
   url,
   buttonVisible,
+  purchased,
   owner
 }) => {
   const [showButtons, setShowButtons] = useState(false);
@@ -36,7 +37,15 @@ export const GiftListCard = ({
             <div className="gfc-name-parent">{name}</div>
             <div className="wrap-catprice">
               <div className="gfc-category-parent">{category}</div>
-              <div className="gfc-price-parent">${price}</div>
+              { !purchased && !owner &&
+                <div className="gfc-price-parent">${price}</div>
+              }
+              { purchased && !owner &&
+                <div className="gfc-purchased-parent">Purchased</div>
+              }
+              { owner &&
+                <div className="gfc-price-parent">${price}</div>
+              }
             </div>
           </div>
 
@@ -77,18 +86,22 @@ export const GiftListCard = ({
                 >
                   Link
                 </button>
-                <button
-                  className="btnCoffee btn-acard-chipin"
-                  onClick={() => alert("Chip In")}
-                >
-                  Chip In
-                </button>
-                <button
-                  className="btnCoffee btn-acard-buy"
-                  onClick={() => alert("Buy")}
-                >
-                  Buy
-                </button>
+                { !purchased && 
+                <>
+                  <button
+                    className="btnCoffee btn-acard-chipin"
+                    onClick={() => alert("Chip In")}
+                  >
+                    Chip In
+                  </button>
+                  <button
+                    className="btnCoffee btn-acard-buy"
+                    onClick={() => alert("Buy")}
+                  >
+                    Buy
+                  </button>
+                </>
+                }
               </>
             )}
           </div>

@@ -9,7 +9,7 @@ import stockImage from "../../../assets/temp/StockShoe.png";
 import { GiftListCard } from "./GiftListCard/GiftListCard";
 
 export const GiftList = ({ name, owner }) => {
-  const [buttonVisible, setButtonsVisible] = useState({
+  const [buttonsVisible, setButtonsVisible] = useState({
     visible: false,
     id: 0,
   });
@@ -68,7 +68,8 @@ export const GiftList = ({ name, owner }) => {
                 price="199.99"
                 category="Shoes"
                 url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
-                buttonVisible={buttonVisible}
+                purchased={false}
+                buttonVisible={buttonsVisible}
               />
             </div>
             <div onClick={() => handleCardClick(2)}>
@@ -82,7 +83,8 @@ export const GiftList = ({ name, owner }) => {
                 price="4989.99"
                 category="Shoes"
                 url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
-                buttonVisible={buttonVisible}
+                purchased={false}
+                buttonVisible={buttonsVisible}
               />
             </div>
             <div onClick={() => handleCardClick(3)}>
@@ -96,7 +98,8 @@ export const GiftList = ({ name, owner }) => {
                 price="49.99"
                 category="Shoes"
                 url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
-                buttonVisible={buttonVisible}
+                purchased={true}
+                buttonVisible={buttonsVisible}
               />
             </div>
           </div>

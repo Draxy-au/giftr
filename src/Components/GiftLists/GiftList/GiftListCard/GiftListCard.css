@@ -92,6 +92,20 @@
   font-size: 0.8em;
 }
 
+.gfc-purchased-parent{
+  min-width: 80px;
+  /* background-color: rgb(180, 185, 255); */
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:1px;
+  background-color: #f0d19c;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
 .gfc-icon-parent{
   /* background-color: rgb(180, 255, 211); */
   min-width: 100px;
