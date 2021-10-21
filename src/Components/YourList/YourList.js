@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import {Jumbo} from "../Jumbo/Jumbo";
 
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 
 import "./YourList.css";
 
@@ -23,6 +23,11 @@ export const YourList = () => {
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
 
+  const history = useHistory();
+
+  const handleClickListItem = () => {
+    history.push('/yourgiftlist')
+  }
 
   return (
     <>
@@ -46,7 +51,7 @@ export const YourList = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr onClick={() => {handleClickListItem()}}>
                 <td className="table-icon">{xmasIcon}</td>
                 <td className="table-name">Xmas List</td>
                 <td className="table-date-created">21/10/2021</td>

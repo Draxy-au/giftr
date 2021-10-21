@@ -32,8 +32,11 @@ function App() {
           <Route path="/giftlists">
             <GiftLists />
           </Route>
+          <Route path="/yourgiftlist">
+            <GiftList name="Xmas List" owner={true} />
+          </Route>
           <Route path="/giftlist">
-            <GiftList name="Emma's Xmas List" />
+            <GiftList name="Emma's Xmas List" owner={false} />
           </Route>
           <Route path="/yourlists">
             <YourList />

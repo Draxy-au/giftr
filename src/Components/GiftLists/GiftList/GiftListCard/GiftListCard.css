@@ -7,6 +7,7 @@
   background-color: #daccb6;
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .gfc-acard {
@@ -111,7 +112,7 @@
   justify-content: flex-start;
   margin:1px;
   background-color: #EBE2D3;
-  padding: 0 5px;
+  padding: 5px 5px 0px 5px;
   font-size: 1em;
 }
 
@@ -129,21 +130,56 @@
   height: 100%;
 }
 
-.btn-acard {
-  width: 75px;
+.btn-acard-chipin {
+  width: 100px;
   border: 0;
   font-size: 0.8em;
   border-radius: 10px;
   color: #fff;
+  margin-left: 5px;
+}
+
+.btn-acard-buy {
+  width: 100px;
+  border: 0;
+  font-size: 0.8em;
+  border-radius: 10px;
+  background-color: rgb(80, 177, 101);
+  color: #fff;
+  margin-left: 5px;
+}
+
+.btn-acard-buy:hover {
+  background-color: rgb(69, 148, 86);
+  border-color: rgb(92, 206, 117);
+}
+
+.btn-acard-buy:active {
+  background-color: rgb(80, 177, 101);
+  border-color: rgb(69, 148, 86);
+  box-shadow: 0 0 0 .2rem rgba(31, 252, 23, 0.5)
+}
+
+.btn-acard-buy:visited {
+  background-color: rgb(69, 148, 86);
+  border-color: rgb(92, 206, 117);
+  box-shadow: 0 0 0 .2rem rgba(31, 252, 23, 0.5)
+}
+
+.btn-acard-buy:focus, .btn-acard-buy:active:focus {
+  background-color: rgb(69, 148, 86);
+  border-color: rgb(92, 206, 117);
+  box-shadow: 0 0 0 .2rem rgba(31, 252, 23, 0.5)
 }
 
 .btn-acard-del {
-  width: 75px;
+  width: 100px;
   border: 0;
   font-size: 0.8em;
   border-radius: 10px;
   background-color: rgb(177, 80, 80);
   color: #fff;
+  margin-left: 5px;
 }
 
 .btn-acard-del:hover {

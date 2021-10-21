@@ -8,7 +8,7 @@ import stockImage from "../../../assets/temp/StockShoe.png";
 
 import { GiftListCard } from "./GiftListCard/GiftListCard";
 
-export const GiftList = ({ name }) => {
+export const GiftList = ({ name, owner }) => {
   const [buttonVisible, setButtonsVisible] = useState({
     visible: false,
     id: 0,
@@ -30,12 +30,31 @@ export const GiftList = ({ name }) => {
             <h1>{name}</h1>
           </div>
           <div>
-            <ButtonGroup>
-              <Button className="btnCoffee btn-ylcard">Add Gift</Button>
-              <Button className="btnCoffee btn-ylcard">Re-Order Gifts</Button>
-              <Button className="btnCoffee btn-ylcard">Upload Gift List</Button>
-              <Button className="btnCoffee btn-ylcard">Delete Category</Button>
-            </ButtonGroup>
+            {owner && (
+              <ButtonGroup>
+                <Button className="btnCoffee btn-ylcard">Add Gift</Button>
+                <Button className="btnCoffee btn-ylcard">Re-Order Gifts</Button>
+                <Button className="btnCoffee btn-ylcard">
+                  Upload Gift List
+                </Button>
+                <Button className="btnCoffee btn-ylcard">
+                  Delete Category
+                </Button>
+              </ButtonGroup>
+            )}
+            {!owner && (
+              <ButtonGroup>
+                <Button className="btnCoffee btn-ylcard">
+                  Sort By Price (Low-High)
+                </Button>
+                <Button className="btnCoffee btn-ylcard">
+                  Sort By Price (High-Low)
+                </Button>
+                <Button className="btnCoffee btn-ylcard">
+                  Sort By Category
+                </Button>
+              </ButtonGroup>
+            )}
           </div>
           <div className="gl-glc">
             <div onClick={() => handleCardClick(1)}>
@@ -43,14 +62,12 @@ export const GiftList = ({ name }) => {
                 name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
                 id="1"
-                
+                owner={owner}
                 img={stockImage}
-                desc="it's a while back since I wrote this, but it
-              doesn't make sense to set a tablecell to 50% of the
-              row-height. In my example you can actually leave out the
-              height"
-                price="1049.99"
+                desc="Built to go fast and far, the Elevon 2 is a responsive, everyday trainer with an energised underfoot feel that is unquestionably Hoka! Sporting a PROFLY midsole for cushioned landings, engineered mesh upper for superior breathability and a rubber outsole with strategic forefoot grooving to increase flexibility during toe-off, this lightweight pair is packed with the advanced tech required for a daily dose of speed and comfort!"
+                price="199.99"
                 category="Shoes"
+                url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
                 buttonVisible={buttonVisible}
               />
             </div>
@@ -59,14 +76,12 @@ export const GiftList = ({ name }) => {
                 name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
                 id="2"
-                
+                owner={owner}
                 img={stockImage}
-                desc="it's a while back since I wrote this, but it
-              doesn't make sense to set a tablecell to 50% of the
-              row-height. In my example you can actually leave out the
-              height"
-                price="49.99"
+                desc="Built to go fast and far, the Elevon 2 is a responsive, everyday trainer with an energised underfoot feel that is unquestionably Hoka! Sporting a PROFLY midsole for cushioned landings, engineered mesh upper for superior breathability and a rubber outsole with strategic forefoot grooving to increase flexibility during toe-off, this lightweight pair is packed with the advanced tech required for a daily dose of speed and comfort!"
+                price="4989.99"
                 category="Shoes"
+                url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
                 buttonVisible={buttonVisible}
               />
             </div>
@@ -75,14 +90,12 @@ export const GiftList = ({ name }) => {
                 name="Hoka One One Men's Elevon 2 Running Shoes - Ombre
               Blue/Saffron"
                 id="3"
-                
+                owner={owner}
                 img={stockImage}
-                desc="it's a while back since I wrote this, but it
-              doesn't make sense to set a tablecell to 50% of the
-              row-height. In my example you can actually leave out the
-              height"
+                desc="Built to go fast and far, the Elevon 2 is a responsive, everyday trainer with an energised underfoot feel that is unquestionably Hoka! Sporting a PROFLY midsole for cushioned landings, engineered mesh upper for superior breathability and a rubber outsole with strategic forefoot grooving to increase flexibility during toe-off, this lightweight pair is packed with the advanced tech required for a daily dose of speed and comfort!"
                 price="49.99"
                 category="Shoes"
+                url="https://www.catch.com.au/event/most-wanted-sports-footwear-155698/product/hoka-one-one-mens-elevon-2-running-shoes-ombre-blue-saffron-8199939"
                 buttonVisible={buttonVisible}
               />
             </div>
