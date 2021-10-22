@@ -1,0 +1,249 @@
+.addgift-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.addgift {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.addgift-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.addgift-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addgift-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid rgb(211, 188, 137);
+  padding: 10px;
+}
+
+.addgift-form input {
+  border: 1px solid rgb(211, 188, 137);
+  border-radius: 5px;
+}
+
+.addgift-form input:focus {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+  margin-bottom: 2px;
+}
+
+.addgift-form input:focus-visible, .addgift-form input:focus-visible:active {
+  outline:none;
+}
+
+.addgift-form input:focus:active {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+}
+
+.addgift-form textarea {
+  border: 1px solid rgb(211, 188, 137);
+  border-radius: 5px;
+}
+
+.addgift-form textarea:focus {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+  margin-bottom: 0px;
+}
+
+.addgift-form textarea:focus-visible, .addgift-form textarea:focus-visible:active {
+  outline:none;
+}
+
+.addgift-form textarea:focus:active {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+}
+
+.addgift-form-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-name label {
+  margin-right: 5px;
+}
+
+.addgift-form-name input {
+  width:100%;
+}
+
+.addgift-form-catprice {
+  display: flex;
+  width:100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.addgift-form-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  margin-right: 5px;
+}
+
+.addgift-form-category label {
+  margin-right: 5px;
+}
+
+.addgift-form-category input {
+  width:100%;
+}
+
+.addgift-form-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-price label {
+  margin-right: 5px;
+}
+
+.addgift-form-price input {
+  width:100%;
+}
+
+.addgift-form-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-desc label {
+  margin-right: 5px;
+}
+
+.addgift-form-desc textarea {
+  width:100%;
+  height: 80px;
+  resize: none;
+}
+
+.addgift-form-url {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-url label {
+  margin-right: 5px;
+}
+
+.addgift-form-url input {
+  width:100%;
+}
+
+.addgift-form-image {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-btnimage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.addgift-form-btnimage img {
+  border:1px solid #000;
+  margin: 5px 5px 5px 5px;
+  mix-blend-mode: multiply;
+}
+
+.addgift-form-image label {
+  margin-right: 5px;
+}
+
+.form-add-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.btn-addgift-chooseimage {
+  width: auto;
+  border: 0;
+  font-size: 0.8em;
+  border-radius: 10px;
+  background-color: rgb(243, 174, 109);
+  color: #fff;
+  margin-left: 5px;
+}
+
+.btn-addgift-chooseimage:hover {
+  background-color: rgb(243, 174, 109);
+  border-color: rgb(180, 129, 82);
+}
+
+.btn-addgift-chooseimage:active {
+  background-color: rgb(194, 146, 101);
+  border-color: rgb(243, 174, 109);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btn-addgift-chooseimage:visited {
+  background-color: rgb(180, 129, 82);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btn-addgift-chooseimage:focus, .btn-addgift-chooseimage:active:focus {
+  background-color: rgb(202, 157, 115);
+  border-color: rgb(243, 174, 109);
+  box-shadow: 0 0 0 .2rem rgba(243, 174, 109, 0.5)
+}
+
+@media screen and (max-width: 440px) {
+  .addgift-form-catprice {
+    flex-direction: column;
+  }
+}

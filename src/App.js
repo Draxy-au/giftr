@@ -12,6 +12,7 @@ import { CreateNewList } from "./Components/CreateNewList/CreateNewList";
 import { GiftLists } from "./Components/GiftLists/GiftLists";
 import { Footer } from "./Components/Footer/Footer";
 import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
+import { AddGift } from "./Components/AddGift/AddGift";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/yourgiftlist">
             <GiftList name="Xmas List" owner={true} />
+          </Route>
+          <Route path="/addgift">
+            <AddGift name="Xmas List" />
           </Route>
           <Route path="/giftlist">
             <GiftList name="Emma's Xmas List" owner={false} />
