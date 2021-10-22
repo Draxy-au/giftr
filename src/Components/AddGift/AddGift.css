@@ -189,7 +189,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100%;;
+  margin-top: 5px
 }
 
 .addgift-form-btnimage img {
@@ -203,6 +204,7 @@
   background-blend-mode: multiply;
   height: 100px;
   width: 100px;
+  
 }
 
 .wrap-img{
@@ -225,6 +227,7 @@
   background-color: rgb(243, 174, 109);
   color: #fff;
   margin-left: 5px;
+  margin-top: 5px
 }
 
 .form-add-button {
