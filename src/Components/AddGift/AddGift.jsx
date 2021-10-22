@@ -22,29 +22,29 @@ export const AddGift = ({ id, name }) => {
         </div>
         <form className="addgift-form" onSubmit={()=>handleSubmit()}>
           <div className="addgift-form-name">
-            <label for="name">Name of Gift </label>
+            <label htmlFor="name">Name of Gift </label>
             <input type="text" id="name" name="name" />
           </div>
           <div className="addgift-form-catprice">
             <div className="addgift-form-category">
-              <label for="category">Gift Category (optional)</label>
+              <label htmlFor="category">Gift Category (optional)</label>
               <input type="text" id="category" name="category" />
             </div>
             <div className="addgift-form-price">
-              <label for="price">Gift Price </label>
+              <label htmlFor="price">Gift Price </label>
               <input type="text" id="price" name="price" />
             </div>
           </div>
           <div className="addgift-form-desc">
-            <label for="desc">Description </label>
+            <label htmlFor="desc">Description </label>
             <textarea rows="3" id="desc" name="desc" />
           </div>
           <div className="addgift-form-url">
-            <label for="url">Link to Gift (optional) </label>
+            <label htmlFor="url">Link to Gift (optional) </label>
             <input type="text" id="url" name="url" />
           </div>
           <div className="addgift-form-image">
-            <label for="image">Add a Gift Image? (optional) </label>
+            <label htmlFor="image">Add a Gift Image? (optional) </label>
             <div className="addgift-form-btnimage">
               <span className="wrap-img"><img className="addgift-form-btnimage-img" src={testImage} alt="" /></span>
               <button className="btnCoffee btn btn-addgift-chooseimage">Choose Image</button>
