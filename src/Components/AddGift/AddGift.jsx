@@ -46,13 +46,13 @@ export const AddGift = ({ id, name }) => {
           <div className="addgift-form-image">
             <label for="image">Add a Gift Image? (optional) </label>
             <div className="addgift-form-btnimage">
-              <img height="100" width="100" src={testImage} alt="" />
+              <span className="wrap-img"><img className="addgift-form-btnimage-img" src={testImage} alt="" /></span>
               <button className="btnCoffee btn btn-addgift-chooseimage">Choose Image</button>
             </div>
           </div>
         </form>
         <div className="form-add-button">
-          <button className="btnCoffee btn btn-acard-chipin">Add Gift</button>
+          <button className="btnCoffee btn-addgift-add">Save Gift</button>
         </div>
       </div>
     </div>

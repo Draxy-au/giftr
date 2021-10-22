@@ -7,8 +7,11 @@ import "./GiftList.css";
 import stockImage from "../../../assets/temp/StockShoe.png";
 
 import { GiftListCard } from "./GiftListCard/GiftListCard";
+import { useHistory } from "react-router";
 
 export const GiftList = ({ name, owner }) => {
+  const history = useHistory();
+
   const [buttonsVisible, setButtonsVisible] = useState({
     visible: false,
     id: 0,
@@ -21,6 +24,10 @@ export const GiftList = ({ name, owner }) => {
     });
   };
 
+  const handleAddGiftBtn = () => {
+    history.push("/addgift");
+  }
+
   return (
     <>
       <Jumbo />
@@ -32,7 +39,7 @@ export const GiftList = ({ name, owner }) => {
           <div>
             {owner && (
               <ButtonGroup>
-                <Button className="btnCoffee btn-ylcard">Add Gift</Button>
+                <Button className="btnCoffee btn-ylcard" onClick={()=>handleAddGiftBtn()}>Add Gift</Button>
                 <Button className="btnCoffee btn-ylcard">Re-Order Gifts</Button>
                 <Button className="btnCoffee btn-ylcard">
                   Upload Gift List
