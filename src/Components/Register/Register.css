@@ -10,11 +10,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 20px;
 }
 
 .register-form {
   width: 600px;
+}
+
+.register-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-facebook {
@@ -24,4 +29,12 @@
 
 .nodecoration {
   text-decoration: none;
+  color: rgb(126, 77, 59);
+  font-weight: bold;
+}
+
+.nodecoration:hover {
+  text-decoration: none;
+  color: rgb(211, 129, 100);
+  font-weight: bold;
 }

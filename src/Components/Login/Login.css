@@ -10,13 +10,26 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 20px;
 }
 
 .login-form {
   width: 600px;
 }
 
-.nodecoration {
+.login-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nodecoration {  
   text-decoration: none;
+  color: rgb(126, 77, 59);
+  font-weight: bold;
+}
+
+.nodecoration:hover {
+  text-decoration: none;
+  color: rgb(211, 129, 100);
+  font-weight: bold;
 }

@@ -36,6 +36,9 @@ export default function Register() {
       <div className="register-title">
         <h1>Register</h1>
       </div>
+      <div className="register-info">
+        <p>Please enter in the following details to register a new account.</p>
+      </div>
       <div className="register-form-parent">
         <Form className="register-form" onSubmit={(e)=>handleSubmit(e)}>
           <Form.Group className="m-3">
@@ -107,12 +110,12 @@ export default function Register() {
           </Form.Group>
 
           <Form.Group className="m-3">
-            <Button className="w-100" variant="primary" type="submit">
+            <Button className="mt-2 w-100 btnCoffee" type="submit">
               Create New Account
             </Button>
-            <p className="text-muted font-weight-bold text-center">
+            <p className="mt-3 text-muted font-weight-bold text-center">
               Already have an Account?{" "}
-              <Link to="/login" className="text-primary ml-2 nodecoration">
+              <Link to="/login" className="ml-2 nodecoration">
                 Login
               </Link>
             </p>
