@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../../redux/user.slice";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +12,19 @@ import { Link } from "react-router-dom";
 export const Login = () => {
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;
+
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const dispatch = useDispatch();
+
+  const handleLogin = async () => {
+    console.log("initial state:", loggedIn);
+    if (!loggedIn) {
+      await dispatch(login());
+    } else {
+      await dispatch(logout());
+    }
+  };
+
   return (
     <>
       <Jumbo />
@@ -17,7 +32,9 @@ export const Login = () => {
         <h1>Login</h1>
       </div>
       <div className="login-info">
-        <p>Please enter in your details so we can log you in to your account.</p>
+        <p>
+          Please enter in your details so we can log you in to your account.
+        </p>
       </div>
       <div className="login-form-parent">
         <Form className="login-form">
@@ -41,7 +58,11 @@ export const Login = () => {
             </InputGroup>
           </Form.Group>
           <Form.Group className="m-3" controlId="loginSubmit">
-            <Button className="mt-2 w-100 btnCoffee" type="submit">
+            <Button
+              className="mt-2 w-100 btnCoffee"
+              type="button"
+              onClick={() => handleLogin()}
+            >
               Login
             </Button>
             <p className="mt-3 text-muted font-weight-bold text-center">
@@ -51,8 +72,11 @@ export const Login = () => {
               </Link>
             </p>
           </Form.Group>
+          <div>
+            <p>TEST: User Logged in: {loggedIn.toString()}</p>
+          </div>
         </Form>
       </div>
     </>
   );
-}
+};
