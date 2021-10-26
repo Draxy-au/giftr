@@ -12,7 +12,7 @@ import { Jumbo } from "../Jumbo/Jumbo";
 import "./Register.css";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export const Register = () => {
   const userIcon = <FontAwesomeIcon icon={faUser} />;
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;

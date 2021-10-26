@@ -1,7 +1,7 @@
 import React from "react";
 import {Jumbo} from "../Jumbo/Jumbo";
 
-export default function HowItWorks() {
+export const HowItWorks = () => {
   return (
     <>
       <Jumbo />

@@ -7,7 +7,7 @@ import { Jumbo } from "../Jumbo/Jumbo";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export const Login = () => {
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;
   return (

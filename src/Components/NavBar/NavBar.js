@@ -32,7 +32,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function NavigationBar() {
+export const NavigationBar = () => {
   const giftIcon = <FontAwesomeIcon icon={faGift} />;
 
   const [expanded, setExpanded] = useState(false);

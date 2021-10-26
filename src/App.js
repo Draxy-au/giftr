@@ -1,13 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./Components/Home/Home";
-import NavigationBar from "./Components/NavBar/NavBar";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
-import NoMatch from "./Components/NoMatch/NoMatch";
+import { Home } from "./Components/Home/Home";
+import { NavigationBar } from "./Components/NavBar/NavBar";
+import { Login } from "./Components/Login/Login";
+import { Register } from "./Components/Register/Register";
+import { NoMatch } from "./Components/NoMatch/NoMatch";
+import { HowItWorks } from "./Components/HowItWorks/HowItWorks";
 import { YourList } from "./Components/YourList/YourList";
-import HowItWorks from "./Components/HowItWorks/HowItWorks";
 import { CreateNewList } from "./Components/CreateNewList/CreateNewList";
 import { GiftLists } from "./Components/GiftLists/GiftLists";
 import { Footer } from "./Components/Footer/Footer";
