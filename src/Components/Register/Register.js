@@ -115,6 +115,7 @@ export const Register = () => {
                placeholder="Password"
               />
             </div>
+            
             <div className="reg-form-grouping">
               <label className="text-icon">
                 {passwordIcon}

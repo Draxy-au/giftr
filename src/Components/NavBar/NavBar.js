@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../../redux/user.slice";
+
 import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
@@ -37,6 +40,9 @@ export const NavigationBar = () => {
 
   const [expanded, setExpanded] = useState(false);
 
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const dispatch = useDispatch();
+
   const navToggle = () => {
     setExpanded(expanded ? false : true);
   };
@@ -44,6 +50,11 @@ export const NavigationBar = () => {
   const closeNav = () => {
     setExpanded(false);
   };
+
+  const handleLogout = async () => {
+    setExpanded(false);
+    await dispatch(logout());
+  }
 
   return (
     <Styles>
@@ -56,10 +67,20 @@ export const NavigationBar = () => {
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">GIFTr Lists</Link></Nav.Item>
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/yourlists">Your Lists</Link></Nav.Item>
           </Nav>
-          <Nav className="ms-auto">
-            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/register">Register</Link></Nav.Item>
-            <Nav.Item><Link className="nav-link loginlink" onClick={closeNav} to="/login">Login</Link></Nav.Item>
-          </Nav>
+          
+            { !loggedIn &&
+              <Nav className="ms-auto">
+                <Nav.Item><Link className="nav-link" onClick={closeNav} to="/register">Register</Link></Nav.Item>
+                <Nav.Item><Link className="nav-link loginlink" onClick={closeNav} to="/login">Login</Link></Nav.Item>
+              </Nav>
+            }
+            { loggedIn &&
+              <Nav className="ms-auto">
+              
+                <Nav.Item><Link className="nav-link loginlink" onClick={() => handleLogout()} to="/">Logout</Link></Nav.Item>
+              </Nav>
+            }
+          
         </Navbar.Collapse>
       </Navbar>
     </Styles>

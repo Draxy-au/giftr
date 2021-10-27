@@ -1,13 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../../redux/user.slice";
-import { Form, Button, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { Jumbo } from "../Jumbo/Jumbo";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import loginSchema from "../../schemas/login.schema";
 
 import "./Login.css";
-import { Link } from "react-router-dom";
 
 export const Login = () => {
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
@@ -16,15 +19,25 @@ export const Login = () => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const dispatch = useDispatch();
 
-  const handleLogin = async () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitForm = async (data) => {
     console.log("initial state:", loggedIn);
     if (!loggedIn) {
       await dispatch(login());
     } else {
       await dispatch(logout());
     }
+    console.log(data);
   };
 
+  
   return (
     <>
       <Jumbo />
@@ -37,45 +50,54 @@ export const Login = () => {
         </p>
       </div>
       <div className="login-form-parent">
-        <Form className="login-form">
-          <Form.Group className="m-3" controlId="loginEmail">
-            <Form.Label>Email address</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
-                {emailIcon}
-              </InputGroup.Text>
-              <Form.Control type="email" placeholder="Enter email" />
-            </InputGroup>
-          </Form.Group>
+        <form className="login-form" onSubmit={handleSubmit(submitForm)}>
+          <div className="login-form-group" >
+            <label>Email address</label>
+            <div className="login-form-grouping">
+              <label className="text-icon">{emailIcon}</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                {...register("email", { required: true })}
+              />
+            </div>
+            <div className="login-form-errors">{errors.email && <p>Please enter a valid Email Address.</p>}</div>
+            
+          </div>
 
-          <Form.Group className="m-3" controlId="loginPassword">
-            <Form.Label>Password</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
-                {passwordIcon}
-              </InputGroup.Text>
-              <Form.Control type="password" placeholder="Password" />
-            </InputGroup>
-          </Form.Group>
-          <Form.Group className="m-3" controlId="loginSubmit">
-            <Button
-              className="mt-2 w-100 btnCoffee"
-              type="button"
-              onClick={() => handleLogin()}
+          <div className="login-form-group">
+            <label>Password</label>
+            <div className="login-form-grouping">
+              <label className="text-icon">{passwordIcon}</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                {...register("password", { required: true })}
+              />
+            </div>
+            <div className="login-form-errors">{errors.password && <p>Please enter a password with more than 3 characters.</p>}</div>
+          </div>
+
+          <div className="login-form-group">
+            <button
+              className="btnCoffee login-form-btn"
+              type="submit"
             >
               Login
-            </Button>
+            </button>
             <p className="mt-3 text-muted font-weight-bold text-center">
               Need an Account?{" "}
               <Link to="/register" className="ml-2 nodecoration">
                 Register
               </Link>
             </p>
-          </Form.Group>
+          </div>
           <div>
             <p>TEST: User Logged in: {loggedIn.toString()}</p>
           </div>
-        </Form>
+        </form>
       </div>
     </>
   );
