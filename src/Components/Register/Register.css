@@ -14,12 +14,72 @@
 
 .register-form {
   width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-icon {
+  height: 30px;
+  text-align: center;
+  background-color: rgb(211, 188, 137);
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.reg-form-group {
+  margin: 1px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-form-group p {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.reg-form-group > label {
+  width: 100%;
+  align-items: flex-start;
+}
+
+.reg-form-grouping {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-form-errors {
+  height: 25px;
+}
+.reg-form-errors p {
+  height: 25px;
+  margin-bottom: 0px;
+  text-align: center;
+  color: rgb(241, 112, 112);
+}
+
+.register-form-btn {
+  width: 450px;
+  border: 0;
+  font-size: 1em;
+  border-radius: 10px;
+  height: 40px;
+  margin: 0 5px;
+  color: #fff;
 }
 
 .register-info {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .btn-facebook {
@@ -37,4 +97,53 @@
   text-decoration: none;
   color: rgb(211, 129, 100);
   font-weight: bold;
+}
+
+.register-form input {
+  width: 100%;
+  border: 1px solid rgb(211, 188, 137);
+  border-radius: 5px;
+}
+
+.register-form input:focus {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+  margin: 1px 1px 1px 1px;
+}
+
+.register-form input:focus-visible, .register-form input:focus-visible:active {
+  outline:none;
+}
+
+.register-form input:focus:active {
+  border: none;
+  outline:none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 5px;
+}
+
+@media screen and (max-width: 650px) {
+  .register-form {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .register-form-grouping {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .register-form {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 275px) {
+  .reg-form-errors {
+    height:50px;
+    margin-bottom: 5px;
+    color: rgb(241, 112, 112);
+  }
 }

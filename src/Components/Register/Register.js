@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-//import bcrypt from "bcryptjs";
-import { Form, Button, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faEnvelope,
-  faUserLock,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { Jumbo } from "../Jumbo/Jumbo";
+import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form';
+import { yupResolver  } from '@hookform/resolvers/yup';
+
+import regSchema from '../../schemas/register.schema';
 
 import "./Register.css";
-import { Link } from "react-router-dom";
 
 export const Register = () => {
   const userIcon = <FontAwesomeIcon icon={faUser} />;
@@ -23,11 +21,12 @@ export const Register = () => {
   const [regPass, setRegPass] = useState("");
   const [regConf, setRegConf] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //const hash = bcrypt.hashSync(regPass, 10);
-    console.log("pass:", regPass);
-    //console.log("hash:", hash);
+  const {register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(regSchema),
+  });
+
+  const submitForm = (data) => {
+    console.log(data);
   }
 
   return (
@@ -40,87 +39,112 @@ export const Register = () => {
         <p>Please enter in the following details to register a new account.</p>
       </div>
       <div className="register-form-parent">
-        <Form className="register-form" onSubmit={(e)=>handleSubmit(e)}>
-          <Form.Group className="m-3">
-            <Form.Label>Email address</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
+        <form className="register-form" onSubmit={handleSubmit(submitForm)}>
+          <div className="reg-form-group">
+            <label>Email address</label>
+            <div className="reg-form-grouping">
+              <label className="text-icon">
                 {emailIcon}
-              </InputGroup.Text>
-              <Form.Control
+              </label>
+              <input
                 id="registerEmail"
+                name="email"
                 type="email"
+                {...register('email', { required: true })}
                 value={regEmail}
                 onChange={(e)=>setRegEmail(e.target.value)}
                placeholder="Enter email"
               />
-            </InputGroup>
-          </Form.Group>
+            </div>
+            <div className="reg-form-errors">{errors.email && <p>Please enter a valid Email Address.</p>}</div>
+          </div>
 
-          <Form.Group className="m-3">
-            <Form.Label>Your Name</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
+          <div className="reg-form-group">
+            <label>First Name</label>
+            <div className="reg-form-grouping">
+              <label className="text-icon">
                 {userIcon}
-              </InputGroup.Text>
-              <Form.Control
+              </label>
+              <input
                 id="registerFName"
                 type="text"
+                name="firstName"
+                {...register('firstName', { required: true })}
                 value={regFName}
                 onChange={(e)=>setRegFName(e.target.value)}
                 placeholder="First name"
               />
-              <Form.Control
+            </div>
+            <div className="reg-form-errors">{errors.firstName && <p>Please enter a valid First Name.</p>}</div>
+          </div>
+
+
+          <div className="reg-form-group">
+            <label>Last Name</label>
+            <div className="reg-form-grouping">
+              <label className="text-icon">
+                {userIcon}
+              </label>
+              <input
                 id="registerLName"
-                className="ms-1"
                 type="text"
+                name="lastName"
+                {...register('lastName', { required: true })}
                 value={regLName}
                 onChange={(e)=>setRegLName(e.target.value)}
                 placeholder="Last name"
               />
-            </InputGroup>
-          </Form.Group>
+            </div>
+            <div className="reg-form-errors">{errors.lastName && <p>Please enter a valid Last Name.</p>}</div>
+          </div>
 
-          <Form.Group className="m-3">
-            <Form.Label>Password</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
+
+          <div className="reg-form-group">
+            <label>Password</label>
+            <div className="reg-form-grouping">
+              <label className="text-icon">
                 {passwordIcon}
-              </InputGroup.Text>
-              <Form.Control
+              </label>
+              <input
                 id="registerPassword"
+                name="password"
                 type="password"
+                {...register('password', { required: true })}
                 value={regPass}
                 onChange={(e)=>setRegPass(e.target.value)}
                placeholder="Password"
               />
-            </InputGroup>
-            <InputGroup className="mb-3">
-              <InputGroup.Text className="text-icon">
+            </div>
+            <div className="reg-form-grouping">
+              <label className="text-icon">
                 {passwordIcon}
-              </InputGroup.Text>
-              <Form.Control
+              </label>
+              <input
                 id="registerConfirm"
+                name="confirmPassword"
                 type="password"
+                {...register('confirmPassword', { required: true })}
                 value={regConf}
                 onChange={(e)=>setRegConf(e.target.value)}
                 placeholder="Confirm password"
               />
-            </InputGroup>
-          </Form.Group>
-
-          <Form.Group className="m-3">
-            <Button className="mt-2 w-100 btnCoffee" type="submit">
+            </div>
+            {errors.password && <div className="reg-form-errors"><p>Please enter a password with more than 3 characters.</p></div>}
+            <div className="reg-form-errors">{!errors.password && errors.confirmPassword && <p>Passwords do not match.</p>}</div>
+          </div>
+ 
+          <div className="reg-form-group">
+            <button className="btnCoffee register-form-btn" type="submit">
               Create New Account
-            </Button>
+            </button>
             <p className="mt-3 text-muted font-weight-bold text-center">
               Already have an Account?{" "}
               <Link to="/login" className="ml-2 nodecoration">
                 Login
               </Link>
             </p>
-          </Form.Group>
-        </Form>
+          </div>
+        </form>
       </div>
     </>
   );
