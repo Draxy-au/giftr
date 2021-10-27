@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../../redux/user.slice";
+import { logout } from "../../redux/user.slice";
 
 import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
@@ -65,7 +65,12 @@ export const NavigationBar = () => {
           <Nav className="justify-content-end">
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/howitworks">How It Works</Link></Nav.Item>
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">GIFTr Lists</Link></Nav.Item>
-            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/yourlists">Your Lists</Link></Nav.Item>
+            { loggedIn &&
+            <>
+              
+              <Nav.Item><Link className="nav-link" onClick={closeNav} to="/yourlists">Your Lists</Link></Nav.Item>
+            </>
+            }
           </Nav>
           
             { !loggedIn &&

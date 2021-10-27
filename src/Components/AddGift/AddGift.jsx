@@ -1,4 +1,5 @@
 import React from 'react'
+import { Jumbo } from "../Jumbo/Jumbo";
 
 import "./AddGift.css";
 
@@ -12,6 +13,8 @@ export const AddGift = ({ id, name }) => {
   }
 
   return (
+    <>
+    <Jumbo />
     <div className="addgift-container">
       <div className="addgift">
         <div className="addgift-title">
@@ -56,5 +59,6 @@ export const AddGift = ({ id, name }) => {
         </div>
       </div>
     </div>
+    </>
   )
 }

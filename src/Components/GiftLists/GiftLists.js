@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCandyCane,
@@ -31,6 +32,7 @@ export const GiftLists = () => {
   const stylegreen = { color: "green" }
 
   const history = useHistory();
+  const loggedIn = useSelector((state) => state.user.loggedIn);
 
   const handleClickListItem = () => {
     history.push('/giftlist')
@@ -53,7 +55,8 @@ export const GiftLists = () => {
               <tr>
                 <th className="table-giftr-icon"></th>
                 <th className="table-giftr-name">List Name</th>
-                <th className="table-giftr-created">Gift Sorted</th>
+                { loggedIn && <th className="table-giftr-created">Subscribed</th>}
+                { loggedIn && <th className="table-giftr-created">Purchased Gift</th>}
                 <th className="table-giftr-created">Date Created</th>
                 <th className="table-giftr-closing">Date Closing</th>
               </tr>
@@ -63,7 +66,8 @@ export const GiftLists = () => {
               <tr onClick={() => {handleClickListItem()}}>
                 <td className="table-giftr-icon">{xmasIcon}</td>
                 <td className="table-giftr-name">Emma's Xmas List</td>
-                <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
+                {loggedIn && <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>}
+                {loggedIn && <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>}
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">25/12/2021</td>
               </tr>
@@ -71,28 +75,32 @@ export const GiftLists = () => {
               <tr>
                 <td className="table-giftr-icon">{bdayIcon}</td>
                 <td className="table-giftr-name">Greg's Birthday List</td>
-                <th className="table-giftr-chosen red">{crossIcon}</th>
+                {loggedIn && <th className="table-giftr-chosen red">{crossIcon}</th>}
+                {loggedIn && <th className="table-giftr-chosen red">-</th>}
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">02/08/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{wishIcon}</td>
                 <td className="table-giftr-name">Charles' Wish List</td>
-                <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>
+                {loggedIn && <th className="table-giftr-chosen" style={stylegreen}>{checkIcon}</th>}
+                {loggedIn && <th className="table-giftr-chosen red" style={stylered}>{crossIcon}</th>}
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{wedIcon}</td>
                 <td className="table-giftr-name">Rhonda and Ketut Wedding List</td>
-                <th className="table-giftr-chosen red">{crossIcon}</th>
+                {loggedIn && <th className="table-giftr-chosen red">{crossIcon}</th>}
+                {loggedIn && <th className="table-giftr-chosen red">-</th>}
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
               </tr>
               <tr>
                 <td className="table-giftr-icon">{otherIcon}</td>
                 <td className="table-giftr-name">John's Gift List</td>
-                <th className="table-giftr-chosen"  style={stylered}>{crossIcon}</th>
+                {loggedIn && <th className="table-giftr-chosen"  style={stylered}>{crossIcon}</th>}
+                {loggedIn && <th className="table-giftr-chosen"  style={stylered}>-</th>}
                 <td className="table-giftr-created">21/10/2021</td>
                 <td className="table-giftr-closing">21/10/2022</td>
               </tr>
