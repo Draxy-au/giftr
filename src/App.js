@@ -1,5 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { login, logout, setUser } from "./redux/user.slice";
+import jwt from "jsonwebtoken";
 
 import { Home } from "./Components/Home/Home";
 import { NavigationBar } from "./Components/NavBar/NavBar";
@@ -14,47 +17,94 @@ import { Footer } from "./Components/Footer/Footer";
 import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
 import { AddGift } from "./Components/AddGift/AddGift";
 
+import { useSelector, useDispatch } from "react-redux";
+
 function App() {
+  // eslint-disable-next-line no-unused-vars
+  const [token, setToken] = useState({});
+
+  const dispatch = useDispatch();
+
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+
+  const validToken = (token) => {
+    if (token.payload) {
+      let exp = new Date(token.payload.exp * 1000);
+      let now = new Date();
+      if (exp > now) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
+  useEffect(() => {
+    let userToken = localStorage.getItem("access-token");
+    if (userToken) {
+      let decodedToken = jwt.decode(userToken, { complete: true });
+      if (validToken(decodedToken)) {
+        setToken(decodedToken);
+        dispatch(setUser(decodedToken.payload));
+        dispatch(login());
+      } else {
+        localStorage.removeItem("access-token");
+        dispatch(logout());
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Router>
       <div className="App flex-shrink-0">
         <NavigationBar />
         <div className="lead">
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/createnewlist">
-            <CreateNewList />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/giftlists">
-            <GiftLists />
-          </Route>
-          <Route path="/yourgiftlist">
-            <GiftList name="Xmas List" owner={true} />
-          </Route>
-          <Route path="/addgift">
-            <AddGift name="Xmas List" />
-          </Route>
-          <Route path="/giftlist">
-            <GiftList name="Emma's Xmas List" owner={false} />
-          </Route>
-          <Route path="/yourlists">
-            <YourList />
-          </Route>
-          <Route path="/howitworks">
-            <HowItWorks />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route>
-            <NoMatch />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            {loggedIn && (
+              <Route path="/createnewlist">
+                <CreateNewList />
+              </Route>
+            )}
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/giftlists">
+              <GiftLists />
+            </Route>
+            {loggedIn && (
+              <Route path="/yourgiftlist">
+                <GiftList name="Xmas List" owner={true} />
+              </Route>
+            )}
+            {loggedIn && (
+              <Route path="/addgift">
+                <AddGift name="Xmas List" />
+              </Route>
+            )}
+            {loggedIn && (
+              <Route path="/giftlist">
+                <GiftList name="Emma's Xmas List" owner={false} />
+              </Route>
+            )}
+            {loggedIn && (
+              <Route path="/yourlists">
+                <YourList />
+              </Route>
+            )}
+            <Route path="/howitworks">
+              <HowItWorks />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route>
+              <NoMatch />
+            </Route>
+          </Switch>
         </div>
         <footer className="fixFooter">
           <Footer />

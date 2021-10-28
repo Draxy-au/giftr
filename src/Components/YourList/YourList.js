@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,8 +11,10 @@ import {
   faGem
 } from "@fortawesome/free-regular-svg-icons";
 import {Jumbo} from "../Jumbo/Jumbo";
+import api from "../../api/user.api";
 
 import { Link,useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./YourList.css";
 
@@ -24,9 +26,40 @@ export const YourList = () => {
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
 
   const history = useHistory();
+  const id = useSelector((state) => state.user.id);
 
-  const handleClickListItem = () => {
-    history.push('/yourgiftlist')
+  const [ userList, setUserList] = useState([]);
+
+  const getUserLists = async (id) => {
+    const response = await api.get(`/user/lists/${id}`);
+    console.log(response);
+    setUserList(response.data[0].lists);
+  }
+
+  useEffect(()=>{
+    getUserLists(id);
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const handleClickList = (id) => {
+    alert(`clicked list: ${id}`);
+  }
+
+  const displayIcon = (type) => {
+    switch (type) {
+      case 'xmas':
+        return xmasIcon;
+      case 'bday':
+        return bdayIcon;
+      case 'wish':
+        return wishIcon
+      case 'wed':
+        return wedIcon;
+      default:
+        return otherIcon;
+    }
+    
   }
 
   return (
@@ -51,36 +84,19 @@ export const YourList = () => {
               </tr>
             </thead>
             <tbody>
-              <tr onClick={() => {handleClickListItem()}}>
-                <td className="table-icon">{xmasIcon}</td>
-                <td className="table-name">Xmas List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">25/12/2021</td>
-              </tr>
-              <tr>
-                <td className="table-icon">{bdayIcon}</td>
-                <td className="table-name">Birthday List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">02/08/2022</td>
-              </tr>
-              <tr>
-                <td className="table-icon">{wishIcon}</td>
-                <td className="table-name">Wish List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
-              </tr>
-              <tr>
-                <td className="table-icon">{wedIcon}</td>
-                <td className="table-name">Wedding List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
-              </tr>
-              <tr>
-                <td className="table-icon">{otherIcon}</td>
-                <td className="table-name">Gift List</td>
-                <td className="table-date-created">21/10/2021</td>
-                <td className="table-date-closing">21/10/2022</td>
-              </tr>
+              
+              {userList.length > 0 && userList.map((list) => {
+              return (
+                <tr key={list.id} onClick={() => {handleClickList(list.id)}}>
+                  <td className="table-icon">{displayIcon(list.type)}</td>
+                  <td className="table-name">{list.name}</td>
+                  <td className="table-date-created">{new Date(list.created_at).toDateString()}</td>
+                  <td className="table-date-closing">{new Date(list.closing).toDateString()}</td>
+                </tr>
+              );
+
+              })}
+              
             </tbody>
           </Table>
         </Container>

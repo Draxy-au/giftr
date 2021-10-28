@@ -58,8 +58,22 @@
 .reg-form-errors {
   height: 25px;
 }
+
+
 .reg-form-errors p {
   height: 25px;
+  margin-bottom: 0px;
+  text-align: center;
+  color: rgb(241, 112, 112);
+}
+
+.reg-form-server-errors {
+  height: auto;
+}
+
+
+.reg-form-server-errors p {
+  height: auto;
   margin-bottom: 0px;
   text-align: center;
   color: rgb(241, 112, 112);

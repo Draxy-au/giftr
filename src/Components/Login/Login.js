@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../../redux/user.slice";
+import { login, logout, setUser } from "../../redux/user.slice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { Jumbo } from "../Jumbo/Jumbo";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import jwt from "jsonwebtoken";
 
 import loginSchema from "../../schemas/login.schema";
 
 import "./Login.css";
+import api from "../../api/auth.api";
+import "../../constants/api";
 
 export const Login = () => {
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;
 
   const loggedIn = useSelector((state) => state.user.loggedIn);
+  const history = useHistory();
   const dispatch = useDispatch();
+
+  const [loginServerErrors, setLoginServerError] = useState([]);
 
   const {
     register,
@@ -27,17 +34,49 @@ export const Login = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const submitForm = async (data) => {
-    console.log("initial state:", loggedIn);
-    if (!loggedIn) {
-      await dispatch(login());
-    } else {
-      await dispatch(logout());
+  const validToken = (token) => {
+    if (token.payload) {
+      let exp = new Date(token.payload.exp * 1000);
+      let now = new Date();
+      if (exp > now) {
+        return true;
+      } else {
+        return false;
+      }
     }
-    console.log(data);
   };
 
-  
+  const submitForm = async (formData) => {
+    const user = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    let userToken = "";
+    try {
+      const response = await api.post("/login", user);
+
+      userToken = response;
+    } catch (err) {
+      if (err.response.data.errors) {
+        return setLoginServerError(err.response.data.errors);
+      } else {
+        return setLoginServerError([err.response.data]);
+      }
+    }
+
+    localStorage.setItem("access-token", userToken.data.token);
+    let decodedToken = jwt.decode(userToken.data.token, { complete: true });
+    if (validToken(decodedToken)) {
+      await dispatch(setUser(decodedToken.payload));
+      await dispatch(login());
+      history.push("/yourlists");
+    } else {
+      localStorage.removeItem("access-token");
+      dispatch(logout());
+    }
+  };
+
   return (
     <>
       <Jumbo />
@@ -51,7 +90,7 @@ export const Login = () => {
       </div>
       <div className="login-form-parent">
         <form className="login-form" onSubmit={handleSubmit(submitForm)}>
-          <div className="login-form-group" >
+          <div className="login-form-group">
             <label>Email address</label>
             <div className="login-form-grouping">
               <label className="text-icon">{emailIcon}</label>
@@ -62,8 +101,9 @@ export const Login = () => {
                 {...register("email", { required: true })}
               />
             </div>
-            <div className="login-form-errors">{errors.email && <p>Please enter a valid Email Address.</p>}</div>
-            
+            <div className="login-form-errors">
+              {errors.email && <p>Please enter a valid Email Address.</p>}
+            </div>
           </div>
 
           <div className="login-form-group">
@@ -77,14 +117,20 @@ export const Login = () => {
                 {...register("password", { required: true })}
               />
             </div>
-            <div className="login-form-errors">{errors.password && <p>Please enter a password with more than 3 characters.</p>}</div>
+            <div className="login-form-errors">
+              {errors.password && (
+                <p>Please enter a password with more than 3 characters.</p>
+              )}
+            </div>
+            <div className="login-form-server-errors">
+              {loginServerErrors?.map((error) => {
+                return <p key={error.id}>{error}</p>;
+              })}
+            </div>
           </div>
 
           <div className="login-form-group">
-            <button
-              className="btnCoffee login-form-btn"
-              type="submit"
-            >
+            <button className="btnCoffee login-form-btn" type="submit">
               Login
             </button>
             <p className="mt-3 text-muted font-weight-bold text-center">

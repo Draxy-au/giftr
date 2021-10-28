@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const schema = yup.object().shape({
+const regSchema = yup.object().shape({
   email: yup.string().email().required(),
   firstName: yup.string().min(2).max(128).required(),
   lastName: yup.string().min(2).max(128).required(),
@@ -8,4 +8,4 @@ const schema = yup.object().shape({
   confirmPassword: yup.string().oneOf([yup.ref("password"), null])
 });
 
-export default schema;
+export default regSchema;

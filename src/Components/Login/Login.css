@@ -94,6 +94,18 @@
   color: rgb(241, 112, 112);
 }
 
+.login-form-server-errors {
+  height: auto;
+}
+
+
+.login-form-server-errors p {
+  height: auto;
+  margin-bottom: 0px;
+  text-align: center;
+  color: rgb(241, 112, 112);
+}
+
 .login-form input {
   width: 100%;
   border: 1px solid rgb(211, 188, 137);

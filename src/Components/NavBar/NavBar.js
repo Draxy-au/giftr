@@ -35,12 +35,13 @@ const Styles = styled.div`
   }
 `;
 
-export const NavigationBar = () => {
+export const NavigationBar = ({fname}) => {
   const giftIcon = <FontAwesomeIcon icon={faGift} />;
 
   const [expanded, setExpanded] = useState(false);
 
   const loggedIn = useSelector((state) => state.user.loggedIn);
+  const first_name = useSelector((state) => state.user.first_name);
   const dispatch = useDispatch();
 
   const navToggle = () => {
@@ -53,6 +54,7 @@ export const NavigationBar = () => {
 
   const handleLogout = async () => {
     setExpanded(false);
+    localStorage.removeItem('access-token');
     await dispatch(logout());
   }
 
@@ -81,7 +83,7 @@ export const NavigationBar = () => {
             }
             { loggedIn &&
               <Nav className="ms-auto">
-              
+                <Nav.Item className="m-2">Logged in as: {first_name}</Nav.Item>
                 <Nav.Item><Link className="nav-link loginlink" onClick={() => handleLogout()} to="/">Logout</Link></Nav.Item>
               </Nav>
             }
