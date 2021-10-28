@@ -7,7 +7,6 @@ import {
   faBirthdayCake,
   faPray,
   faGifts,
-
 } from "@fortawesome/free-solid-svg-icons";
 import { faGem } from "@fortawesome/free-regular-svg-icons";
 
@@ -21,16 +20,12 @@ export const CreateNewList = () => {
   const wedIcon = <FontAwesomeIcon icon={faGem} />;
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
 
-
   const [listType, setListType] = useState("notset");
 
- 
- 
   const handleBtnClick = (type) => {
     setListType(type);
   };
 
-  
   return (
     <>
       <Jumbo />
