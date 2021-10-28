@@ -65,8 +65,13 @@ export const GiftLists = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const handleClickList = () => {
-    history.push("/giftlist");
+  const handleClickList = (list_id) => {
+    if (loggedIn) {
+      alert(`Logged in user click list ${list_id}`)
+    } else {
+      history.push("/login");
+    }
+    
   };
 
   const displayPurchased = (l_id) => {
@@ -136,7 +141,7 @@ export const GiftLists = () => {
                   <th className="table-giftr-icon"></th>
                   <th className="table-giftr-name">List Name</th>
                   {loggedIn && (
-                    <th className="table-giftr-created">Subscribed</th>
+                    <th className="table-giftr-created">Subscribed To</th>
                   )}
                   {loggedIn && (
                     <th className="table-giftr-created">Purchased Gift</th>
@@ -152,7 +157,7 @@ export const GiftLists = () => {
                       <tr
                         key={list.id}
                         onClick={() => {
-                          handleClickList();
+                          handleClickList(list.id);
                         }}
                       >
                         <td className="table-giftr-icon">

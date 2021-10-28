@@ -61,37 +61,37 @@ function App() {
         <NavigationBar />
         <div className="lead">
           <Switch>
-            <Route path="/login">
+            <Route exact path="/login">
               <Login />
             </Route>
             {loggedIn && (
-              <Route path="/createnewlist">
+              <Route exact path="/createnewlist">
                 <CreateNewList />
               </Route>
             )}
-            <Route path="/register">
+            <Route exact path="/register">
               <Register />
             </Route>
-            <Route path="/giftlists">
+            <Route exact  path="/giftlists">
               <GiftLists />
             </Route>
             {loggedIn && (
-              <Route path="/yourgiftlist">
+              <Route exact path="/yourgiftlist">
                 <GiftList name="Xmas List" owner={true} />
               </Route>
             )}
             {loggedIn && (
-              <Route path="/addgift">
+              <Route exact path="/addgift">
                 <AddGift name="Xmas List" />
               </Route>
             )}
             {loggedIn && (
-              <Route path="/giftlist">
+              <Route exact path="/giftlist">
                 <GiftList name="Emma's Xmas List" owner={false} />
               </Route>
             )}
             {loggedIn && (
-              <Route path="/yourlists">
+              <Route exact path="/yourlists">
                 <YourList />
               </Route>
             )}

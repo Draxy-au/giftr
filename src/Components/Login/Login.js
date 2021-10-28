@@ -140,9 +140,6 @@ export const Login = () => {
               </Link>
             </p>
           </div>
-          <div>
-            <p>TEST: User Logged in: {loggedIn.toString()}</p>
-          </div>
         </form>
       </div>
     </>

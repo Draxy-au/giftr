@@ -3,7 +3,7 @@ import React from 'react'
 export const NoMatch = () => {
   return (
     <div>
-      Page not found sorry.
+      The page you were looking for is not available.
     </div>
   )
 }
