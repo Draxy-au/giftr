@@ -33,7 +33,7 @@ export const GiftList = ({ name, owner }) => {
       <Jumbo />
       <div className="yourlist-container">
         <div className="yourlist">
-          <div className="yourlist-title">
+          <div className="title">
             <h1>{name}</h1>
           </div>
           <div>

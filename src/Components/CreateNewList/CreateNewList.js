@@ -32,7 +32,7 @@ export const CreateNewList = () => {
       <div className="create-new-list-container">
         <div className="create-new-list">
           {listType === "notset" && (
-            <div className="create-new-list-title">
+            <div className="title">
               <h1>Create New List</h1>
             </div>
           )}
@@ -88,23 +88,23 @@ export const CreateNewList = () => {
             )}
 
             {listType === "xmas" && (
-              <NewListForm icon={xmasIcon} title={"Christmas Gift"} />
+              <NewListForm type={listType} icon={xmasIcon} title={"Christmas Gift"} />
             )}
 
             {listType === "bday" && (
-              <NewListForm icon={bdayIcon} title={"Birthday Gift"} />
+              <NewListForm type={listType} icon={bdayIcon} title={"Birthday Gift"} />
             )}
 
             {listType === "wish" && (
-              <NewListForm icon={wishIcon} title={"Wish Gift"} />
+              <NewListForm type={listType} icon={wishIcon} title={"Wish Gift"} />
             )}
             
             {listType === "wed" && (
-              <NewListForm icon={wedIcon} title={"Wedding Gift"} />
+              <NewListForm type={listType} icon={wedIcon} title={"Wedding Gift"} />
             )}
 
             {listType === "other" && (
-              <NewListForm icon={otherIcon} title={"Gift"} />
+              <NewListForm type={listType} icon={otherIcon} title={"Gift"} />
             )}
 
 

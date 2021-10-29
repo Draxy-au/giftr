@@ -64,7 +64,7 @@ export const YourList = () => {
       <Jumbo />
       <div className="yourlist-container">
         <div className="yourlist">
-          <div className="yourlist-title">
+          <div className="title">
             <h1>Your GIFTr Lists</h1>
           </div>
           <Container className="d-flex flex-column">

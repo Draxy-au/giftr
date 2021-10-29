@@ -126,7 +126,7 @@ export const GiftLists = () => {
       <Jumbo />
       <div className="yourlist-container">
         <div className="yourlist">
-          <div className="yourlist-title">
+          <div className="title">
             <h1>GIFTr Lists</h1>
           </div>
           <div>

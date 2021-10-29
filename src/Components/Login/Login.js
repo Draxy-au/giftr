@@ -80,19 +80,19 @@ export const Login = () => {
   return (
     <>
       <Jumbo />
-      <div className="login-title">
+      <div className="title">
         <h1>Login</h1>
       </div>
-      <div className="login-info">
+      <div className="info">
         <p>
           Please enter in your details so we can log you in to your account.
         </p>
       </div>
-      <div className="login-form-parent">
-        <form className="login-form" onSubmit={handleSubmit(submitForm)}>
-          <div className="login-form-group">
+      <div className="form-parent">
+        <form className="form" onSubmit={handleSubmit(submitForm)}>
+          <div className="form-group">
             <label>Email address</label>
-            <div className="login-form-grouping">
+            <div className="form-grouping">
               <label className="text-icon">{emailIcon}</label>
               <input
                 type="email"
@@ -101,14 +101,14 @@ export const Login = () => {
                 {...register("email", { required: true })}
               />
             </div>
-            <div className="login-form-errors">
+            <div className="form-errors">
               {errors.email && <p>Please enter a valid Email Address.</p>}
             </div>
           </div>
 
-          <div className="login-form-group">
+          <div className="form-group">
             <label>Password</label>
-            <div className="login-form-grouping">
+            <div className="form-grouping">
               <label className="text-icon">{passwordIcon}</label>
               <input
                 type="password"
@@ -117,20 +117,20 @@ export const Login = () => {
                 {...register("password", { required: true })}
               />
             </div>
-            <div className="login-form-errors">
+            <div className="form-errors">
               {errors.password && (
                 <p>Please enter a password with more than 3 characters.</p>
               )}
             </div>
-            <div className="login-form-server-errors">
+            <div className="form-server-errors">
               {loginServerErrors?.map((error) => {
                 return <p key={error.id}>{error}</p>;
               })}
             </div>
           </div>
 
-          <div className="login-form-group">
-            <button className="btnCoffee login-form-btn" type="submit">
+          <div className="form-group">
+            <button className="btnCoffee form-btn" type="submit">
               Login
             </button>
             <p className="mt-3 text-muted font-weight-bold text-center">
