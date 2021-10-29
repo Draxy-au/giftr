@@ -38,9 +38,7 @@ export const NewListForm = ({ type, icon, title }) => {
   });
 
   const submitForm = async (formData) => {
-    console.log(formDate);
     let datestring = formDate.getFullYear().toString() + "\\" + (formDate.getMonth()+1).toString() + "\\" + formDate.getDate().toString();
-    console.log(datestring);
     
     const newList = {
       user_id: id,
@@ -51,8 +49,7 @@ export const NewListForm = ({ type, icon, title }) => {
     };
 
     try {
-      const response = await api.post("/list", newList);
-      console.log("Response: ", response);
+      await api.post("/list", newList);
     } catch (err) {
       if (err.response.data.errors) {
         return setRegServerError(err.response.data.errors);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { login, logout, setUser } from "../../redux/user.slice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUserLock } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,7 @@ export const Login = () => {
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
   const passwordIcon = <FontAwesomeIcon icon={faUserLock} />;
 
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+  
   const history = useHistory();
   const dispatch = useDispatch();
 
