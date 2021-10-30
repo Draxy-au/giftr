@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./GiftListCard.css";
 
+
 export const GiftListCard = ({
   id,
   img,
@@ -15,6 +16,8 @@ export const GiftListCard = ({
   owner
 }) => {
   const [showButtons, setShowButtons] = useState(false);
+
+  const image_path = "images/"+ img; 
 
   useEffect(() => {
     if (buttonVisible.id.toString() === id) {
@@ -36,7 +39,7 @@ export const GiftListCard = ({
           <div className="gfc-acard-top">
             <div className="gfc-name-parent">{name}</div>
             <div className="wrap-catprice">
-              <div className="gfc-category-parent">{category}</div>
+              
               { !purchased && !owner &&
                 <div className="gfc-price-parent">${price}</div>
               }
@@ -51,7 +54,7 @@ export const GiftListCard = ({
 
           <div className="gfc-acard-mid">
             <div className="gfc-icon-parent">
-              <img className="gfc-icon" src={img} alt={name} />
+              <img className="gfc-icon" src={image_path} alt={name} />
             </div>
             <div className="gfc-desc-parent">{desc}</div>
           </div>

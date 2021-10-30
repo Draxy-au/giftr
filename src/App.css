@@ -56,6 +56,35 @@
   box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
 }
 
+.btnCoffee-l {
+  
+  background-color: rgb(177, 162, 112);
+  border-color: rgb(167, 146, 122);
+}
+
+.btnCoffee-l:hover {
+  background-color: rgb(150, 137, 96);
+  border-color: rgb(177, 162, 112);
+}
+
+.btnCoffee-l:active {
+  background-color: rgb(133, 93, 44);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCoffee-l:visited {
+  background-color: rgb(124, 97, 63);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCoffee-l:focus, .btnCoffee-l:active:focus {
+  background-color: rgb(133, 102, 64);
+  border-color: rgb(165, 112, 51);
+  box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
 .title {
   display:flex;
   align-items: center;
@@ -200,6 +229,8 @@
   font-size: 16px;
   height:30px;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0 5px;
   color: #fff;
 }
@@ -213,7 +244,8 @@
   height:34px;
   border-radius: 5px;
   margin: 0 5px;
-  padding: 0px 15px 0px 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   color: #fff;
 }
 .form-btn {

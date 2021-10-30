@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   loggedIn: false,
+  selectedGiftList: 0,
   email: "",
   first_name: "",
   last_name: "",
@@ -18,6 +19,9 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.loggedIn = false
     },
+    setSelectedGiftList: (state, action) => {
+      state.selectedGiftList = action.payload.id
+    },
     setUser: (state, action) => {
       state.email = action.payload.email
       state.first_name = action.payload.first_name
@@ -27,6 +31,6 @@ export const userSlice = createSlice({
   },
 })
 
-export const { login, logout, setUser } = userSlice.actions
+export const { login, logout, setUser, setSelectedGiftList } = userSlice.actions
 
 export default userSlice.reducer

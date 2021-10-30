@@ -10,9 +10,10 @@ import {
 import { faGem } from "@fortawesome/free-regular-svg-icons";
 import { Jumbo } from "../Jumbo/Jumbo";
 import api from "../../api/user.api";
+import { setSelectedGiftList } from "../../redux/user.slice";
 
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./YourList.css";
 
@@ -24,7 +25,9 @@ export const YourList = () => {
   const otherIcon = <FontAwesomeIcon icon={faGifts} />;
 
   const history = useHistory();
+  const dispatch = useDispatch();
   const id = useSelector((state) => state.user.id);
+  const list_id = useSelector((state) => state.user.selectedGiftList);
 
   const [userList, setUserList] = useState([]);
 
@@ -39,9 +42,9 @@ export const YourList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const handleClickList = (id) => {
-    alert(`clicked list: ${id}`);
-    history.push("/yourlists");
+  const handleClickList = async (id) => {
+    await dispatch(setSelectedGiftList({id: id}));
+    history.push("/giftlist");
   };
 
   const displayIcon = (type) => {

@@ -4,6 +4,12 @@
   width: 100%;
 }
 
+.owner-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 490px) {
   .btn-ylcard {
     font-size: 0.70em;
