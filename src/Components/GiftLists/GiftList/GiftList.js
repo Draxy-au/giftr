@@ -66,12 +66,11 @@ export const GiftList = () => {
             {giftListOwner && ( // TODO: REVERT THIS TO !!
               <div className="owner-btn-container">
                 <button className="btnCoffee-l std-btn" onClick={()=>handleAddGiftBtn()}>Add Gift</button>
-                <button className="btnCoffee-l std-btn">Re-Order Gifts</button>
                 <button className="btnCoffee-l std-btn">
                   Upload Gift List
                 </button>
                 <button className="btnCoffee-l std-btn">
-                  Delete Category
+                  PUBLISH LIST
                 </button>
               </div>
             )}
