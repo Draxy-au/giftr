@@ -25,10 +25,6 @@ export const GiftList = () => {
 
   useEffect(() => {
     if (state_id){
-      console.log("state_id: ", state_id);
-      console.log("logged in: ", loggedIn);
-      console.log("list_id: ", list_id);
-
       getList(list_id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

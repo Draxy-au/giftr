@@ -19,7 +19,11 @@ export const GiftListCard = ({
   const image_path = "images/"+ img; 
 
   useEffect(() => {
-    if (buttonVisible.id.toString() === id) {
+    console.log("buttonVisible.id: ",buttonVisible.id);
+    console.log("id: ",id);
+    
+    if (buttonVisible.id === id) {
+      console.log("IN!");
       showButtons ? setShowButtons(false) : setShowButtons(true);
     } else {
       setShowButtons(false);
