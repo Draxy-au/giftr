@@ -8,6 +8,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 15px;
+}
+
+.edit-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.edit-title-save-icon {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+.edit-title-edit-icon {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  font-size: 22px;
+}
+
+.edit-title-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 15px;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 490px) {

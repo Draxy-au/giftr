@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Jumbo } from "../../Jumbo/Jumbo";
 import { useSelector } from "react-redux";
 import api from "../../../api/user.api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import "./GiftList.css";
 
@@ -9,6 +12,9 @@ import { GiftListCard } from "./GiftListCard/GiftListCard";
 import { useHistory } from "react-router";
 
 export const GiftList = () => {
+  const editIcon = <FontAwesomeIcon icon={faEdit} />;
+  const saveIcon = <FontAwesomeIcon icon={faSave} />;
+
   const history = useHistory();
 
   const loggedIn = useSelector((state) => state.user.loggedIn);
@@ -22,13 +28,26 @@ export const GiftList = () => {
   const [listDetails, setListDetails] = useState([]);
   const [giftList, setGiftList] = useState([]);
   const [giftListOwner, setGiftListOwner] = useState(false);
+  const [editTitle, setEditTitle] = useState(false);
+  const [editTitleText, setEditTitleText] = useState("");
+
+  const getListTitle = async() => {
+    setEditTitleText(listDetails.name);
+  }
 
   useEffect(() => {
     if (state_id){
       getList(list_id);
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state_id]);
+
+  useEffect(() => {
+    getListTitle();    
+    console.log("listDetails.name:",listDetails.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listDetails]);
 
   const getList = async (l_id) => {
     console.log("In getList: ", list_id);
@@ -50,6 +69,33 @@ export const GiftList = () => {
     });
   };
 
+  const handleEditClick = () => {
+    setEditTitle(true);
+  }
+
+  const handleSaveClick = async () => {
+    await api.put(`/list/${list_id}`, {
+      "name": editTitleText,
+      "type": listDetails.type,
+      "user_id": listDetails.user_id,
+      "closing": listDetails.closing,
+    });
+    setEditTitle(false);
+  }
+
+  const handleEnterKey = async (e) => {
+    if (e.key === 'Enter') {
+      setEditTitleText(editTitleText);
+      await api.put(`/list/${list_id}`, {
+        "name": editTitleText,
+        "type": listDetails.type,
+        "user_id": listDetails.user_id,
+        "closing": listDetails.closing,
+      });
+      setEditTitle(false);
+    }
+  }
+
   const handleAddGiftBtn = () => {
     history.push("/addgift");
   }
@@ -60,18 +106,24 @@ export const GiftList = () => {
       <div className="yourlist-container">
         <div className="yourlist">
           <div className="title">
-            <h1>{listDetails.name}</h1>
+            { editTitle &&
+              <><input className="edit-title-edit" onKeyDown={(e) => handleEnterKey(e)} onChange={(e) => setEditTitleText(e.target.value)} value={editTitleText} type="text" ></input> <div className="edit-title-save-icon" onClick={()=>handleSaveClick()}>{saveIcon}</div></>
+            }
+            { !editTitle &&
+              <h1 className="edit-title" >{editTitleText} <div className="edit-title-edit-icon" onClick={()=>handleEditClick()}>{editIcon}</div></h1>
+            }
+          </div>
+          <div>
+            Closing Date: {listDetails && new Date(listDetails.closing).toDateString()}
+          </div>
+          <div className="info">
+            Please add items to your list here. To share this list, press the Share GIFTr List button.
           </div>
           <div>
             {giftListOwner && ( // TODO: REVERT THIS TO !!
               <div className="owner-btn-container">
                 <button className="btnCoffee-l std-btn" onClick={()=>handleAddGiftBtn()}>Add Gift</button>
-                <button className="btnCoffee-l std-btn">
-                  Upload Gift List
-                </button>
-                <button className="btnCoffee-l std-btn">
-                  PUBLISH LIST
-                </button>
+                <button className="btnCoffee-l std-btn">Share GIFTr LIST</button>
               </div>
             )}
             {!giftListOwner && (
@@ -81,9 +133,6 @@ export const GiftList = () => {
                 </button>
                 <button className="btnCoffee std-btn">
                   Sort By Price (High-Low)
-                </button>
-                <button className="btnCoffee std-btn">
-                  Sort By Category
                 </button>
               </div>
             )}

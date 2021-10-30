@@ -66,6 +66,12 @@ export const GiftListCard = ({
               <>
                 <button
                   className="btnCoffee btn-acard-chipin"
+                  onClick={() => handleLinkBtnClick()}
+                >
+                  Link
+                </button>
+                <button
+                  className="btnCoffee btn-acard-chipin"
                   onClick={() => alert("Edit")}
                 >
                   Edit
