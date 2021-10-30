@@ -63,13 +63,13 @@
   width: 100%;
   font-size: 36px;
   font-weight: bold;
-  color: rgb(100, 86, 54);
+  color: rgb(129, 113, 94);
 }
 
 .title h1 {
   font-size: 36px;
   font-weight: bold;
-  color: rgb(100, 86, 54);
+  color: rgb(129, 113, 94);
 }
 
 .form-container {
@@ -204,6 +204,18 @@
   color: #fff;
 }
 
+.std-big-btn {
+  display: inline-flex;
+  align-items: flex-start; 
+  border: 0;
+  font-size: 20px;
+  font-weight: bold;
+  height:34px;
+  border-radius: 5px;
+  margin: 0 5px;
+  padding: 0px 15px 0px 15px;
+  color: #fff;
+}
 .form-btn {
   display: inline-flex;
   justify-content: center;

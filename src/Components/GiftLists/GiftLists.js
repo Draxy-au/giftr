@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,18 +33,13 @@ export const GiftLists = () => {
   const id = useSelector((state) => state.user.id);
 
   const [allList, setAllList] = useState([]);
-  const [userSubs, setUserSubs] = useState([]);
+  
   const [userPurchases, setUserPurchases] = useState([]);
-
-  const getAllLists = async () => {
-    const response = await api.get(`/list`);
-    setAllList(response.data);
-  };
 
   const getUserSubscriptions = async () => {
     const response = await api.get(`/user/subscriptions/${id}`);
     if (response.data.length > 0) {
-      setUserSubs(response.data[0].subscriptions);
+      setAllList(response.data[0].subscriptions);
     }
   };
 
@@ -57,7 +52,7 @@ export const GiftLists = () => {
   };
 
   useEffect(() => {
-    getAllLists();
+    
     if (id){
       getUserSubscriptions();
       getUserPurchases();
@@ -76,22 +71,6 @@ export const GiftLists = () => {
 
   const displayPurchased = (l_id) => {
     if (userPurchases?.find(({ list_id }) => list_id === l_id)) {
-      return (
-        <th className="table-giftr-chosen" style={stylegreen}>
-          {checkIcon}
-        </th>
-      );
-    } else {
-      return (
-        <th className="table-giftr-chosen" style={stylered}>
-          {crossIcon}
-        </th>
-      );
-    }
-  };
-
-  const displaySubscribed = (l_id) => {    
-    if (userSubs?.find(({ id }) => id === l_id)) {
       return (
         <th className="table-giftr-chosen" style={stylegreen}>
           {checkIcon}
@@ -141,9 +120,6 @@ export const GiftLists = () => {
                   <th className="table-giftr-icon"></th>
                   <th className="table-giftr-name">List Name</th>
                   {loggedIn && (
-                    <th className="table-giftr-created">Subscribed To</th>
-                  )}
-                  {loggedIn && (
                     <th className="table-giftr-created">Purchased Gift</th>
                   )}
                   <th className="table-giftr-created">Date Created</th>
@@ -153,6 +129,7 @@ export const GiftLists = () => {
               <tbody>
                 {allList.length > 1 &&
                   allList.map((list) => {
+                    
                     return (
                       <tr
                         key={list.id}
@@ -164,7 +141,6 @@ export const GiftLists = () => {
                           {displayIcon(list.type)}
                         </td>
                         <td className="table-giftr-name">{list.name}</td>
-                        {loggedIn && displaySubscribed(list.id)}
                         {loggedIn && displayPurchased(list.id)}
                         <td className="table-giftr-created">
                           {new Date(list.created_at).toDateString()}

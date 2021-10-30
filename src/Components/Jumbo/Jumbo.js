@@ -47,8 +47,8 @@ export const Jumbo = ({page}) => (
               
                 <h1 className="home-text">GIFTr is the simple way to create and manage gift lists</h1>
                 <div className="home-buttons">
-                  <Link to="/giftlists"><Button className="btnCreateGiftList">View the GIFTr Lists</Button></Link>
-                  <Link to="/howitworks"><Button className="btnFindGiftList">How Does It Work</Button></Link>
+                  <Link to="/giftlists"><Button className="btnCreateGiftList">How Does It Work</Button></Link>
+                  <Link to="/howitworks"><Button className="btnFindGiftList">Make A GIFTr List</Button></Link>
                 </div>
               
             </Container>

@@ -74,7 +74,7 @@ export const YourList = () => {
           </div>
           <div className="d-flex flex-column w-100">
             <Link to="/createnewlist">
-              <button className="btnCoffee std-btn">Create a New List</button>
+              <button className="btnCoffee std-big-btn">Create a New List</button>
             </Link>
             <Table striped bordered hover>
               <thead>

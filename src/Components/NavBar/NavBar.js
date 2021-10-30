@@ -66,12 +66,11 @@ export const NavigationBar = ({fname}) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">
             <Nav.Item><Link className="nav-link" onClick={closeNav} to="/howitworks">How It Works</Link></Nav.Item>
-            <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">GIFTr Lists</Link></Nav.Item>
             { loggedIn &&
-            <>
-              
+                <Nav.Item><Link className="nav-link" onClick={closeNav} to="/giftlists">GIFTr Lists</Link></Nav.Item>
+            }
+            { loggedIn &&
               <Nav.Item><Link className="nav-link" onClick={closeNav} to="/yourlists">Your Lists</Link></Nav.Item>
-            </>
             }
           </Nav>
           
