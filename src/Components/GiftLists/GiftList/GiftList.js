@@ -105,7 +105,6 @@ export const GiftList = () => {
                     img={item.image_path}
                     desc={item.description}
                     price={item.price}
-                    category={item.category}
                     url={item.url}
                     purchased={item.status}
                     buttonVisible={buttonsVisible}

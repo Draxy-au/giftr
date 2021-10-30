@@ -9,7 +9,6 @@ export const GiftListCard = ({
   name,
   desc,
   price,
-  category,
   url,
   buttonVisible,
   purchased,
