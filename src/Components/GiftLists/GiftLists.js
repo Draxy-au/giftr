@@ -134,7 +134,7 @@ export const GiftLists = () => {
               Here you will find the GIFTr lists that you have subscribed to.
             </p>
           </div>
-          <Container className="d-flex flex-column">
+          <div className="d-flex flex-column w-100">
             <Table striped bordered hover>
               <thead>
                 <tr>
@@ -177,7 +177,7 @@ export const GiftLists = () => {
                   })}
               </tbody>
             </Table>
-          </Container>
+          </div>
         </div>
       </div>
     </>

@@ -67,9 +67,14 @@ export const YourList = () => {
           <div className="title">
             <h1>Your GIFTr Lists</h1>
           </div>
-          <Container className="d-flex flex-column">
+          <div>
+            <p>
+              Here are all the GIFTr Lists that you have created.
+            </p>
+          </div>
+          <div className="d-flex flex-column w-100">
             <Link to="/createnewlist">
-              <Button className="btnCoffee mt-2">Create a New List</Button>
+              <button className="btnCoffee std-btn">Create a New List</button>
             </Link>
             <Table striped bordered hover>
               <thead>
@@ -103,7 +108,7 @@ export const YourList = () => {
                   })}
               </tbody>
             </Table>
-          </Container>
+          </div>
         </div>
       </div>
     </>

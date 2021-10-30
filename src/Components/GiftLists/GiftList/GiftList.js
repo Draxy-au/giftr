@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { button, div } from "react-bootstrap";
 import { Jumbo } from "../../Jumbo/Jumbo";
 
 import "./GiftList.css";
@@ -12,13 +12,13 @@ import { useHistory } from "react-router";
 export const GiftList = ({ name, owner }) => {
   const history = useHistory();
 
-  const [buttonsVisible, setButtonsVisible] = useState({
+  const [buttonsVisible, setbuttonsVisible] = useState({
     visible: false,
     id: 0,
   });
 
   const handleCardClick = (id) => {
-    setButtonsVisible({
+    setbuttonsVisible({
       visible: true,
       id: id,
     });
@@ -38,29 +38,29 @@ export const GiftList = ({ name, owner }) => {
           </div>
           <div>
             {owner && (
-              <ButtonGroup>
-                <Button className="btnCoffee btn-ylcard" onClick={()=>handleAddGiftBtn()}>Add Gift</Button>
-                <Button className="btnCoffee btn-ylcard">Re-Order Gifts</Button>
-                <Button className="btnCoffee btn-ylcard">
+              <div>
+                <button className="btnCoffee std-btn" onClick={()=>handleAddGiftBtn()}>Add Gift</button>
+                <button className="btnCoffee std-btn">Re-Order Gifts</button>
+                <button className="btnCoffee std-btn">
                   Upload Gift List
-                </Button>
-                <Button className="btnCoffee btn-ylcard">
+                </button>
+                <button className="btnCoffee std-btn">
                   Delete Category
-                </Button>
-              </ButtonGroup>
+                </button>
+              </div>
             )}
             {!owner && (
-              <ButtonGroup>
-                <Button className="btnCoffee btn-ylcard">
+              <div>
+                <button className="btnCoffee std-btn">
                   Sort By Price (Low-High)
-                </Button>
-                <Button className="btnCoffee btn-ylcard">
+                </button>
+                <button className="btnCoffee std-btn">
                   Sort By Price (High-Low)
-                </Button>
-                <Button className="btnCoffee btn-ylcard">
+                </button>
+                <button className="btnCoffee std-btn">
                   Sort By Category
-                </Button>
-              </ButtonGroup>
+                </button>
+              </div>
             )}
           </div>
           <div className="gl-glc">
