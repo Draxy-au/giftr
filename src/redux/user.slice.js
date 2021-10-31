@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   loggedIn: false,
   selectedGiftList: 0,
+  selectedGiftListItem: 0,
   email: "",
   first_name: "",
   last_name: "",
@@ -22,6 +23,10 @@ export const userSlice = createSlice({
     setSelectedGiftList: (state, action) => {
       state.selectedGiftList = action.payload.id
     },
+    setSelectedGiftListItem: (state, action) => {
+      state.selectedGiftListItem = action.payload.id
+      console.log(action.payload.id)
+    },
     setUser: (state, action) => {
       state.email = action.payload.email
       state.first_name = action.payload.first_name
@@ -31,6 +36,6 @@ export const userSlice = createSlice({
   },
 })
 
-export const { login, logout, setUser, setSelectedGiftList } = userSlice.actions
+export const { login, logout, setUser, setSelectedGiftList,setSelectedGiftListItem } = userSlice.actions
 
 export default userSlice.reducer

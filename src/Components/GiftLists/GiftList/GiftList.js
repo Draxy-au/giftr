@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import api from "../../../api/user.api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 import "./GiftList.css";
 
@@ -17,7 +16,6 @@ export const GiftList = () => {
 
   const history = useHistory();
 
-  const loggedIn = useSelector((state) => state.user.loggedIn);
   const state_id = useSelector((state) => state.user.id);
   const list_id = useSelector((state) => state.user.selectedGiftList);
 
@@ -45,14 +43,13 @@ export const GiftList = () => {
 
   useEffect(() => {
     getListTitle();    
-    console.log("listDetails.name:",listDetails.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listDetails]);
 
   const getList = async (l_id) => {
-    console.log("In getList: ", list_id);
+    
     const response = await api.get(`list/items/${l_id}`);
-    console.log(response);
+    
     if (response.data.length > 0) {
       setGiftList(response.data[0].items);
       setListDetails(response.data[0]);
@@ -96,7 +93,7 @@ export const GiftList = () => {
     }
   }
 
-  const handleAddGiftBtn = () => {
+  const handleAddGiftBtn = async (li_id) => {
     history.push("/addgift");
   }
 

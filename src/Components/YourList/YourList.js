@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCandyCane,
@@ -27,7 +27,7 @@ export const YourList = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.id);
-  const list_id = useSelector((state) => state.user.selectedGiftList);
+  //const list_id = useSelector((state) => state.user.selectedGiftList);
 
   const [userList, setUserList] = useState([]);
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { setSelectedGiftListItem } from "../../../../redux/user.slice";
+import { useHistory } from "react-router-dom";
 import "./GiftListCard.css";
 
 
@@ -18,12 +20,14 @@ export const GiftListCard = ({
 
   const image_path = "images/"+ img; 
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   useEffect(() => {
-    console.log("buttonVisible.id: ",buttonVisible.id);
-    console.log("id: ",id);
+    
     
     if (buttonVisible.id === id) {
-      console.log("IN!");
+      
       showButtons ? setShowButtons(false) : setShowButtons(true);
     } else {
       setShowButtons(false);
@@ -33,6 +37,10 @@ export const GiftListCard = ({
 
   const handleLinkBtnClick = () => {
     window.open(url, "_blank");
+  }
+  const handleEditBtnClick = async (id) => {
+    await dispatch(setSelectedGiftListItem({id}));
+    history.push('/editGift');
   }
 
   return (
@@ -72,7 +80,7 @@ export const GiftListCard = ({
                 </button>
                 <button
                   className="btnCoffee btn-acard-chipin"
-                  onClick={() => alert("Edit")}
+                  onClick={() => handleEditBtnClick(id)}
                 >
                   Edit
                 </button>

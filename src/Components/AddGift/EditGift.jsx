@@ -16,7 +16,7 @@ import newItemSchema from "../../schemas/newItem.schema";
 import testImage from "../../assets/temp/StockShoe.png";
 
 // name only here for mockup
-export const AddGift = () => {
+export const EditGift = () => {
   const dollarIcon = <FontAwesomeIcon icon={faDollarSign} />;
 
   const [newItemId, setNewItemId] = useState(0);
@@ -34,9 +34,24 @@ export const AddGift = () => {
   const list_id = useSelector((state) => state.user.selectedGiftList);
   const listitem_id = useSelector((state) => state.user.selectedGiftListItem);
 
- 
+  const getListItem = async (l_id) => {
+    const response = await api.get(`/listitem/${l_id}`);
+    setNewItemId(response.data.id);
+    setNewItemName(response.data.name);
+    setNewItemPrice(response.data.price);
+    setNewItemDescription(response.data.description);
+    setNewItemUrl(response.data.url);
+    setNewItemImagePath("/images/" + response.data.image_path);
+
+  }
+
   useEffect(() => {
-    
+    console.log("list_id: ", list_id)
+    console.log("listitem_id: ", listitem_id)
+    if (listitem_id){
+      console.log("editting! ", listitem_id)
+      getListItem(listitem_id);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [list_id]);
 
@@ -85,8 +100,8 @@ export const AddGift = () => {
           <div className="addgift-info">
             Fill in the fields below to add a gift to your list.
           </div>
-          <form className="addgift-form" onSubmit={handleSubmit(submitForm)}>
-            <div className="addgift-form-name">
+          <form className="form" onSubmit={handleSubmit(submitForm)}>
+            <div className="form-group">
               <label htmlFor="name">Name of Gift </label>
               <input type="text" id="name" name="name" {...register("name", { required: true })} value={newItemName} onChange={((e)=>setNewItemName(e.target.value))} />
               <div className="form-errors">
@@ -94,22 +109,22 @@ export const AddGift = () => {
               </div>
             </div>
 
-            <div className="addgift-form-price">
+            <div className="form-group-price">
               <label htmlFor="price">Gift Price </label>
-              <div className="price-row"><div className="moneyIcon">{dollarIcon}</div><input type="text" id="price" name="price" {...register("price", { required: true })} value={newItemPrice} onChange={((e)=>setNewItemPrice(e.target.value))} /></div>
+              <div className="price-row"><div className="moneyIcon">{dollarIcon}</div><input className="form-group-price-input" type="text" id="price" name="price" {...register("price", { required: true })} value={newItemPrice} onChange={((e)=>setNewItemPrice(e.target.value))} /></div>
               <div className="form-errors">
                 {errors.price && <p>Please enter a valid price.</p>}
               </div>
             </div>
 
-            <div className="addgift-form-desc">
+            <div className="form-group">
               <label htmlFor="desc">Description </label>
               <textarea rows="3" id="desc" name="desc" {...register("description", { required: false })} value={newItemDescription} onChange={((e)=>setNewItemDescription(e.target.value))} />
               <div className="form-errors">
                 {errors.description && <p>Please enter a valid description.</p>}
               </div>
             </div>
-            <div className="addgift-form-url">
+            <div className="form-group">
               <label htmlFor="url">Link to Gift (optional) </label>
               <input type="text" id="url" name="url" {...register("url", { required: false })} value={newItemUrl} onChange={((e)=>setNewItemUrl(e.target.value))} />
               <div className="form-errors">
@@ -119,7 +134,7 @@ export const AddGift = () => {
             <div className="addgift-form-image">
               <label htmlFor="image">Add a Gift Image? (optional) </label>
               <div className="addgift-form-btnimage">
-                <span className="wrap-img"><img className="addgift-form-btnimage-img" src={testImage} alt="" /></span>
+                <span className="wrap-img"><img className="addgift-form-btnimage-img" src={newItemImagePath} alt="" /></span>
                 <button className="btnCoffee btn btn-addgift-chooseimage" onClick={()=>handleImageClick}>Choose Image</button>
                 <div className="form-errors">
                 

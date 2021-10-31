@@ -182,12 +182,32 @@
   font-size: 0.8em;
 }
 
+.form-group textarea {
+  width: 100%;
+}
+
+.form-group-price {
+  margin: 1px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .form-group > label {
   
   width: 100%;
   font-weight: bold;
   align-items: flex-start;
   color: rgb(153, 130, 81);
+}
+
+.form-group-price > label {
+  font-weight: bold;
+  color: rgb(153, 130, 81);
+}
+
+.form-group-price-input {
+  width: 100px !important;
 }
 
 .form-grouping {

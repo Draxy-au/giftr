@@ -16,6 +16,7 @@ import { GiftLists } from "./Components/GiftLists/GiftLists";
 import { Footer } from "./Components/Footer/Footer";
 import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
 import { AddGift } from "./Components/AddGift/AddGift";
+import { EditGift } from "./Components/AddGift/EditGift";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -82,7 +83,12 @@ function App() {
             )}
             {loggedIn && (
               <Route exact path="/addgift">
-                <AddGift name="Xmas List" />
+                <AddGift />
+              </Route>
+            )}
+            {loggedIn && (
+              <Route exact path="/editgift">
+                <EditGift />
               </Route>
             )}
             {loggedIn && (

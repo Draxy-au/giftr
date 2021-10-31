@@ -139,7 +139,15 @@
 }
 
 .addgift-form-price input {
-  width:100%;
+  width:100px;
+}
+
+.price-row {
+  display: flex;
+  flex-direction: row;
+}
+.moneyIcon {
+  margin-right: 5px;
 }
 
 .addgift-form-desc {
