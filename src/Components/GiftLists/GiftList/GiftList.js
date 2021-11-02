@@ -143,7 +143,7 @@ export const GiftList = () => {
                     name={item.name}
                     id={item.id}
                     owner="TODO_ID"
-                    img={item.image_path}
+                    img={item.id + ".png"}
                     desc={item.description}
                     price={item.price}
                     url={item.url}

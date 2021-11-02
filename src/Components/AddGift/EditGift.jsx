@@ -10,84 +10,109 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 import "./AddGift.css";
 import api from "../../api/user.api";
-import newItemSchema from "../../schemas/newItem.schema";
-
-
-import testImage from "../../assets/temp/StockShoe.png";
+import editItemSchema from "../../schemas/editItem.schema";
+import { useHistory } from 'react-router';
 
 // name only here for mockup
 export const EditGift = () => {
   const dollarIcon = <FontAwesomeIcon icon={faDollarSign} />;
 
+  // eslint-disable-next-line no-unused-vars
   const [newItemId, setNewItemId] = useState(0);
+  const [file, setFile] = useState('');
+  const [fileName, setFileName] = useState('');
   const [newItemName, setNewItemName] = useState("");
   const [newItemPrice, setNewItemPrice] = useState("");
   const [newItemDescription, setNewItemDescription] = useState("");
   const [newItemUrl, setNewItemUrl] = useState("");
   const [newItemImagePath, setNewItemImagePath] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [regServerErrors, setRegServerError] = useState([]);
 
-  // const history = useHistory();
-
-  // const dispatch = useDispatch();
+  const history = useHistory();
 
   const list_id = useSelector((state) => state.user.selectedGiftList);
   const listitem_id = useSelector((state) => state.user.selectedGiftListItem);
 
   const getListItem = async (l_id) => {
     const response = await api.get(`/listitem/${l_id}`);
-    setNewItemId(response.data.id);
-    setNewItemName(response.data.name);
-    setNewItemPrice(response.data.price);
-    setNewItemDescription(response.data.description);
-    setNewItemUrl(response.data.url);
-    setNewItemImagePath("/images/" + response.data.image_path);
+    await setNewItemId(response.data.id);
+    await setNewItemName(response.data.name);
+    await setNewItemPrice(response.data.price);
+    await setNewItemDescription(response.data.description);
+    await setNewItemUrl(response.data.url);
+    await setNewItemImagePath("/images/" + response.data.id + ".png");
 
   }
 
   useEffect(() => {
-    console.log("list_id: ", list_id)
-    console.log("listitem_id: ", listitem_id)
     if (listitem_id){
-      console.log("editting! ", listitem_id)
       getListItem(listitem_id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [list_id]);
+  }, [listitem_id]);
 
-  const { register, handleSubmit, formState: { errors }, } = useForm({
-    resolver: yupResolver(newItemSchema),
+ 
+
+  const { register, getValues, handleSubmit, formState: { errors }, } = useForm({
+    resolver: yupResolver(editItemSchema),
   });
 
   const submitForm = async (formData) => {
-    console.log("entered submit form")
-    const newItem = {
+    await getValues();
+    await getListItem(listitem_id);
+    const updatedItem = {
       list_id: list_id,
-      name: formData.name,
-      price: formData.price,
-      description: formData.description,
-      url: formData.url,
-      image_path: "",
+      name: newItemName,
+      price: parseFloat(newItemPrice),
+      description: newItemDescription,
+      url: newItemUrl,
+      image_path: listitem_id + ".png",
     };
 
     try {
-      console.log(await api.post("/listitem", newItem));
+      const response = await api.put(`/listitem/${listitem_id}`, updatedItem);
+
+      if (fileName) {
+        api.post('/upload/new', {
+          tempFileName: fileName,
+          newFileName: response.data.id + '.png',
+          });
+      }
+      history.push('/giftlist');
     } catch (err) {
       if (err.response.data.errors) {
-        console.log(regServerErrors)
         return setRegServerError(err.response.data.errors);
       } else {
         return setRegServerError([err.response.data]);
       }
     }
+    history.push('/giftlist');
   }
 
-  const handleImageClick = () => {
-    const image_path = "1.png";
-    setNewItemImagePath(image_path);
-    console.log(newItemImagePath);
+  const handleImageClick = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      
+      const res = await api.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      const { fileName } = res.data;
+      setNewItemImagePath('/images/temp/' + fileName);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
+  const onChange = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+
+  }
 
   return (
     <>
@@ -135,9 +160,10 @@ export const EditGift = () => {
               <label htmlFor="image">Add a Gift Image? (optional) </label>
               <div className="addgift-form-btnimage">
                 <span className="wrap-img"><img className="addgift-form-btnimage-img" src={newItemImagePath} alt="" /></span>
-                <button className="btnCoffee btn btn-addgift-chooseimage" onClick={()=>handleImageClick}>Choose Image</button>
+                <input type='file' onChange={(e) => { onChange(e) }} />
+                <button className="btnCoffee btn btn-addgift-chooseimage" onClick={(e) => handleImageClick(e)}>Upload Image</button>
                 <div className="form-errors">
-                
+
                 </div>
               </div>
             </div>

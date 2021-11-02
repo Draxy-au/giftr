@@ -31,6 +31,16 @@
   margin: 0 5px 20px 5px;
 }
 
+.choosefile {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+}
+
+.choosefile input {
+  width:auto;
+}
+
 .addgift-form {
   display: flex;
   flex-direction: column;

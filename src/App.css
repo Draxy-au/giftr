@@ -195,6 +195,11 @@
   flex-direction: column;
 }
 
+.form-group-price p {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
 .form-group > label {
   
   width: 100%;

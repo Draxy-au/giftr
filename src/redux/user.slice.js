@@ -25,7 +25,6 @@ export const userSlice = createSlice({
     },
     setSelectedGiftListItem: (state, action) => {
       state.selectedGiftListItem = action.payload.id
-      console.log(action.payload.id)
     },
     setUser: (state, action) => {
       state.email = action.payload.email

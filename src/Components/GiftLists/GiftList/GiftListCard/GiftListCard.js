@@ -72,12 +72,12 @@ export const GiftListCard = ({
           <div className="gfc-acard-bot">
             {showButtons && owner && (
               <>
-                <button
+                {  url && <button
                   className="btnCoffee btn-acard-chipin"
                   onClick={() => handleLinkBtnClick()}
                 >
                   Link
-                </button>
+                </button>}
                 <button
                   className="btnCoffee btn-acard-chipin"
                   onClick={() => handleEditBtnClick(id)}
