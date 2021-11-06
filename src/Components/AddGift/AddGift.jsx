@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from "react-redux";
 import { Jumbo } from "../Jumbo/Jumbo";
 import { useForm } from "react-hook-form";
@@ -34,7 +34,7 @@ export const AddGift = () => {
   });
 
   const submitForm = async (formData) => {
-    
+
     const newItem = {
       list_id: list_id,
       name: formData.name,
@@ -46,12 +46,13 @@ export const AddGift = () => {
 
     try {
       const response = await api.post("/listitem", newItem);
-      
-      api.post('/upload/new', {
-        tempFileName: fileName,
-        newFileName: response.data.id + '.png',
-      });
-      
+
+      if (fileName.length > 0) {
+        api.post('/upload/new', {
+          tempFileName: fileName,
+          newFileName: response.data.id + '.png',
+        });
+      }
       history.push('/giftlist');
     } catch (err) {
       if (err.response.data.errors) {
@@ -62,7 +63,7 @@ export const AddGift = () => {
       }
     }
 
-    
+
   }
 
   const handleImageClick = async (e) => {
@@ -71,13 +72,12 @@ export const AddGift = () => {
     formData.append('file', file);
     try {
       if (newItemImagePath.length > 0) {
-        
-        const response = await api.post(`/upload/old`, { 
+
+        await api.post(`/upload/old`, {
           tempFileName: newItemImagePath,
-         });
-        //console.log(response);
+        });
       }
-      
+
       const res = await api.post('/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'

@@ -11,6 +11,37 @@
   margin-top: 15px;
 }
 
+.closing-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: bold;
+  width: 100%;
+}
+
+.closing-date-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: bold;
+}
+
+.closing-date-value {
+  margin-left: 15px;
+  font-size: 1em;
+}
+
+.closing-date-dp {
+  margin-left: 15px;
+  width: 250px;
+}
+
+.edit-date-edit-icon {
+  margin-left: 15px;
+}
+
 .edit-title {
   display: flex;
   flex-direction: row;
@@ -43,20 +74,76 @@
   font-size: 18px;
 }
 
+@media screen and (max-width: 800px) {
+  .cardlisttable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
 @media screen and (max-width: 490px) {
   .btn-ylcard {
     font-size: 0.70em;
   }
+  .closing-date-dp {
+    margin-left: 15px;
+    width: 180px;
+  }
+
 }
 
 @media screen and (max-width: 440px) {
   .btn-ylcard {
     font-size: 0.6em;
   }
+
 }
 
 @media screen and (max-width: 390px) {
   .btn-ylcard {
     font-size: 0.5em;
+  }
+  .edit-title-edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 10px;
+    
+  }
+
+  .closing-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .closing-date-text {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-weight: bold;
+  }
+  
+  .closing-date-value {
+    margin-left: 1px;
+  }
+  
+  .closing-date-dp {
+    margin-left: 1px;
+    width: 180px;
+  }
+  
+  .edit-date-edit-icon {
+    margin-left: 15px;
   }
 }

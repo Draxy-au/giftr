@@ -15,6 +15,7 @@ import { Jumbo } from "../Jumbo/Jumbo";
 import api from "../../api/user.api";
 import "./GiftLists.css";
 import { useHistory } from "react-router-dom";
+//import { setSelectedGiftList } from "../../redux/user.slice";
 
 export const GiftLists = () => {
   const xmasIcon = <FontAwesomeIcon icon={faCandyCane} />;
@@ -33,7 +34,7 @@ export const GiftLists = () => {
   const id = useSelector((state) => state.user.id);
 
   const [allList, setAllList] = useState([]);
-  
+
   const [userPurchases, setUserPurchases] = useState([]);
 
   const getUserSubscriptions = async () => {
@@ -45,28 +46,29 @@ export const GiftLists = () => {
 
   const getUserPurchases = async () => {
     const response = await api.get(`/user/purchases/${id}`);
-    
+
     if (response.data.length > 0) {
       setUserPurchases(response.data[0].purchases);
     }
   };
 
   useEffect(() => {
-    
-    if (id){
+    if (id) {
       getUserSubscriptions();
       getUserPurchases();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const handleClickList = (list_id) => {
+  const handleClickList = async (slist_id) => {
     if (loggedIn) {
-      alert(`Logged in user click list ${list_id}`)
+      var b = new Buffer.from(slist_id.toString());
+      var s = b.toString("base64");
+
+      history.push(`/giftlist/${s}`);
     } else {
       history.push("/login");
     }
-    
   };
 
   const displayPurchased = (l_id) => {
@@ -129,7 +131,6 @@ export const GiftLists = () => {
               <tbody>
                 {allList.length > 1 &&
                   allList.map((list) => {
-                    
                     return (
                       <tr
                         key={list.id}

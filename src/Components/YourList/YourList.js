@@ -12,7 +12,7 @@ import { Jumbo } from "../Jumbo/Jumbo";
 import api from "../../api/user.api";
 import { setSelectedGiftList } from "../../redux/user.slice";
 
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./YourList.css";
@@ -62,6 +62,10 @@ export const YourList = () => {
     }
   };
 
+  const handleCreateNewList = () => {
+    history.push('/createnewlist');
+  }
+
   return (
     <>
       <Jumbo />
@@ -76,9 +80,9 @@ export const YourList = () => {
             </p>
           </div>
           <div className="d-flex flex-column w-100">
-            <Link to="/createnewlist">
-              <button className="btnCoffee std-big-btn">Create a New List</button>
-            </Link>
+            <div className="createnewlist-btn">
+              <button className="btnCoffee std-big-btn" onClick={()=>handleCreateNewList()}>Create a New List</button>
+              </div>
             <Table striped bordered hover>
               <thead>
                 <tr>
@@ -93,6 +97,7 @@ export const YourList = () => {
                   userList.map((list) => {
                     return (
                       <tr
+                        className="click-row"
                         key={list.id}
                         onClick={() => {
                           handleClickList(list.id);

@@ -26,7 +26,7 @@
   align-items: flex-start;
   width:100%;
   height: 60px;
-  background-color: #c0b7a9;
+  background-color: rgb(211, 188, 137);
 }
 
 .gfc-acard-mid {
@@ -37,6 +37,7 @@
   width:100%;
   height: 100px;
   margin-top: 2px;
+  
 }
 
 .gfc-acard-bot {
@@ -80,13 +81,13 @@
 
 .gfc-price-parent{
   min-width: 100px;
-  /* background-color: rgb(180, 185, 255); */
+  border: 1px solid rgb(197, 175, 129);
   height:100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin:1px;
-  background-color: #d1cabe;
+  background-color: rgb(209, 190, 150);
   overflow: hidden;
   font-weight: bold;
   font-size: 0.8em;
@@ -118,7 +119,6 @@
 }
 
 .gfc-desc-parent {
-  /* background-color: rgb(255, 180, 233); */
   height: 100%;
   width:100%;
   overflow: hidden;
@@ -126,7 +126,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin:1px;
-  background-color: #EBE2D3;
+  background-color: rgb(252, 237, 207);
   padding: 5px 5px 0px 5px;
   font-size: 0.8em;
 }
@@ -221,6 +221,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .gfc-acard {
+    width: 100%;
+  }
   .gfc-container {
     display: flex;
     flex-direction: column;
@@ -239,17 +242,17 @@
     font-size: 0.8em;
   }
   .gfc-name-parent{
+    width: 100%;
     padding-left: 5px;
     padding-right: 5px;
   }
   .wrap-catprice{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     width:100%;
     padding-left: 5px;
     padding-right: 5px;
-
   }
   .gfc-desc-parent{
     font-size: 0.8em;
@@ -257,6 +260,20 @@
 }
 
 @media screen and (max-width: 420px) {
+  .info {
+    font-size: 0.8em;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .closing-date-text {
+    font-size: 0.8em;
+    padding-left: 5px;
+   
+  }
+  .closing-date-value {
+    font-size: 0.8em;
+    padding-right: 5px;
+  }
   .btn-acard-buy {
     font-size: 0.7em;
     width: 75px;
@@ -280,13 +297,25 @@
 }
 
 @media screen and (max-width: 320px) {
+  .info {
+    font-size: 0.7em;
+  }
+  .closing-date-text {
+    font-size: 0.7em;
+    padding-left: 5px;
+   
+  }
+  .closing-date-value {
+    font-size: 0.7em;
+    padding-right: 5px;
+  }
   .btn-acard-buy {
     font-size: 0.6em;
     width: 65px;
   }
   .btn-acard-chipin {
     font-size: 0.6em;
-    width: 65px;
+    width: 60px;
   }
   .btn-acard-link {
     font-size: 0.6em;

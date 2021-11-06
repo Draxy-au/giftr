@@ -13,6 +13,14 @@
   width: 800px;
 }
 
+.click-row {
+  cursor: pointer;
+}
+
+.createnewlist-btn {
+  width: 250px;
+}
+
 .yourlist-title {
   display: flex;
   align-items: center;

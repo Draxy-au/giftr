@@ -1,0 +1,43 @@
+.gli {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.gli-name {
+  border: 1px solid rgb(211, 188, 137);
+  padding: 5px;  
+  background-color: rgb(211, 188, 137);
+}
+.gli-image {
+  display: flex;
+  border: 1px solid rgb(211, 188, 137);
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+.gli-price {
+  border: 1px solid rgb(211, 188, 137);
+  padding: 5px;
+  background-color: rgb(209, 190, 150);
+}
+.gli-url {
+  border: 1px solid rgb(211, 188, 137);
+  padding: 5px;
+  background-color: rgb(235, 217, 181);
+}
+.gli-description {
+  border: 1px solid rgb(211, 188, 137);
+  padding: 5px;
+  background-color: rgb(252, 237, 207);
+}
+
+.gli-header {
+  font-weight: bold;
+}
+
+.gli-image-img {
+  height: 200px;
+  max-width: 200px;
+}

@@ -17,6 +17,7 @@ import { Footer } from "./Components/Footer/Footer";
 import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
 import { AddGift } from "./Components/AddGift/AddGift";
 import { EditGift } from "./Components/AddGift/EditGift";
+import { GiftListItemInfo } from "./Components/GiftLists/GiftList/GiftListItemInfo/GiftListItemInfo";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -87,15 +88,25 @@ function App() {
               </Route>
             )}
             {loggedIn && (
+              <Route exact path="/giftlistitem">
+                <GiftListItemInfo />
+              </Route>
+            )}
+            {loggedIn && (
               <Route exact path="/editgift">
                 <EditGift />
               </Route>
             )}
             {loggedIn && (
               <Route exact path="/giftlist">
-                <GiftList name="Emma's Xmas List" owner={false} />
+                <GiftList owner={false} />
               </Route>
             )}
+            
+              <Route exact path="/giftlist/:findid">
+                <GiftList owner={false} />
+              </Route>
+            
             {loggedIn && (
               <Route exact path="/yourlists">
                 <YourList />
