@@ -13,6 +13,7 @@ import api from "../../../../api/user.api";
 export const GiftListItemInfo = () => {
   const dollarIcon = <FontAwesomeIcon icon={faDollarSign} />;
 
+  // eslint-disable-next-line no-unused-vars
   const [newItemId, setNewItemId] = useState("");
   const [newItemName, setNewItemName] = useState("");
   const [newItemPrice, setNewItemPrice] = useState("");

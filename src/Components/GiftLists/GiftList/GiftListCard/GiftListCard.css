@@ -65,20 +65,6 @@
   font-size: 1em;
 }
 
-.gfc-category-parent{
-  min-width: 120px;
-  /* background-color: rgb(250, 255, 180); */
-  height:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin:1px;
-  background-color: #EBE2D3;
-  overflow: hidden;
-  font-weight: bold;
-  font-size: 0.8em;
-}
-
 .gfc-price-parent{
   min-width: 100px;
   border: 1px solid rgb(197, 175, 129);
@@ -153,6 +139,17 @@
   color: #fff;
   margin-left: 5px;
 }
+
+.btn-acard-chipin-o {
+  width: 100px;
+  border: 0;
+  font-size: 0.8em;
+  border-radius: 10px;
+  color: #fff;
+  margin-left: 5px;
+  background-color: rgb(197, 173, 107);
+}
+
 
 .btn-acard-buy {
   width: 100px;

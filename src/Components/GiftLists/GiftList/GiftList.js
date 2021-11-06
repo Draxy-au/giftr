@@ -44,32 +44,33 @@ export const GiftList = () => {
   const { findid } = useParams();
 
   const getListTitleDate = async () => {
+    if (listDetails.name){
     await setEditTitleText(listDetails.name);
     await setNewClosingDate(new Date(listDetails.closing));
+    }
   };
 
   const subdToList = async (uid) => {
-    try {
-      const response = await api.get(`/user/subscriptions/${uid}`);
-      console.log(response);
-
-      if (response.data.length > 0) {
-        response.data[0].subscriptions.map((sub) => {
-          console.log("subid: ", sub.id);
-          if (findid) {
-            let fid = new Buffer.from(findid, "base64").toString();
-            console.log("find id: ", fid);
-            if (sub.id === parseInt(fid)) {
-              console.log("found sub, setting subd true: ", sub);
-              setSubd(true);
-              return true;
+    if (uid > 0) {
+      try {
+        const response = await api.get(`/user/subscriptions/${uid}`);
+        if (response.data.length > 0) {
+          response.data[0].subscriptions.map((sub) => {
+            if (findid) {
+              let fid = new Buffer.from(findid, "base64").toString();
+              console.log("find id: ", fid);
+              if (sub.id === parseInt(fid)) {
+                console.log("found sub, setting subd true: ", sub);
+                setSubd(true);
+                return true;
+              }
             }
-          }
-          return false;
-        });
+            return false;
+          });
+        }
+      } catch (err) {
+        console.log("Wait up", err);
       }
-    } catch (err) {
-      console.log("Wait up", err);
     }
   };
 
@@ -83,8 +84,6 @@ export const GiftList = () => {
       setFindID(fid);
       getList(fid);
       setGiftListID(fid);
-      console.log('state_id: ', state_id);
-      console.log('fid: ', fid);
     }
     if (state_id && !findid) {
       getList(list_id);
@@ -106,17 +105,15 @@ export const GiftList = () => {
   const getList = async (l_id) => {
     try {
       const response = await api.get(`list/items/${l_id}`);
-      
+
       if (response.data.length > 0) {
         setGiftList(response.data[0].items);
         setListDetails(response.data[0]);
         if (response.data[0].user_id === state_id) {
-          console.log("gift list reposne", response.data[0]);
-          console.log("Gift List Owner: true");
           setGiftListOwner(true);
         }
       } else {
-        history.push('/')
+        history.push("/");
       }
     } catch (err) {
       history.push("/");
@@ -338,7 +335,6 @@ export const GiftList = () => {
               )}
             </div>
             {giftList.map((item) => {
-              console.log("user id passing: ", listDetails)
               return (
                 <div
                   key={item.id}

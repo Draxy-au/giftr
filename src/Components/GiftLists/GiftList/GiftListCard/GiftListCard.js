@@ -40,10 +40,7 @@ export const GiftListCard = ({
   }, [buttonVisible]);
 
   useEffect(() => {
-    console.log("user_id:", user_id);
-    console.log("state_id:", state_id);
     if (user_id === state_id) {
-
       setListOwner(true);
     }
     if (state_id === 0) {
@@ -105,9 +102,7 @@ export const GiftListCard = ({
             {purchased && !listOwner && (
               <div className="gfc-purchased-parent">Reserved</div>
             )}
-            {listOwner && (
-              <div className="gfc-purchased-parent">${price}</div>
-            )}
+            {listOwner && <div className="gfc-purchased-parent">${price}</div>}
           </div>
         </div>
 
@@ -156,14 +151,14 @@ export const GiftListCard = ({
               >
                 Link
               </button>
+              {purchased && <button
+                className="btnCoffee btn-acard-chipin-o"
+                onClick={() => alert("Chip In")}
+              >
+                Chip In
+              </button>}
               {!purchased && (
                 <>
-                  <button
-                    className="btnCoffee btn-acard-chipin"
-                    onClick={() => alert("Chip In")}
-                  >
-                    Chip In
-                  </button>
                   <button
                     className="btnCoffee btn-acard-buy"
                     onClick={() => handleReserveClick()}

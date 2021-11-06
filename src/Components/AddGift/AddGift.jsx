@@ -52,6 +52,10 @@ export const AddGift = () => {
           tempFileName: fileName,
           newFileName: response.data.id + '.png',
         });
+      } else {
+        api.post('/upload/newd', {
+          newFileName: response.data.id + '.png',
+        });
       }
       history.push('/giftlist');
     } catch (err) {
