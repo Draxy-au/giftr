@@ -40,9 +40,10 @@ export const GiftListCard = ({
   }, [buttonVisible]);
 
   useEffect(() => {
+    console.log("user_id:", user_id);
+    console.log("state_id:", state_id);
     if (user_id === state_id) {
-      console.log("user_id:", user_id);
-      console.log("state_id:", state_id);
+
       setListOwner(true);
     }
     if (state_id === 0) {
@@ -50,7 +51,7 @@ export const GiftListCard = ({
     }
 
     // eslint-disable-next-line
-  }, [state_id]);
+  }, [user_id]);
 
   const handleLinkBtnClick = () => {
     window.open(url, "_blank");
@@ -98,17 +99,14 @@ export const GiftListCard = ({
         <div className="gfc-acard-top">
           <div className="gfc-name-parent">{name}</div>
           <div className="wrap-catprice">
-            {!purchased && !findid && (
+            {!purchased && !listOwner && (
               <div className="gfc-price-parent">${price}</div>
             )}
-            {purchased === "Purchased" && !findid && (
+            {purchased && !listOwner && (
               <div className="gfc-purchased-parent">Reserved</div>
             )}
-            {purchased === "Purchased" && findid && (
-              <div className="gfc-purchased-parent">Reserved</div>
-            )}
-            {purchased !== "Purchased" && findid && (
-              <div className="gfc-price-parent">${price}</div>
+            {listOwner && (
+              <div className="gfc-purchased-parent">${price}</div>
             )}
           </div>
         </div>

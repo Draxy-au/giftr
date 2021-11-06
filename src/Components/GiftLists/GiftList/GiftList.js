@@ -338,6 +338,7 @@ export const GiftList = () => {
               )}
             </div>
             {giftList.map((item) => {
+              console.log("user id passing: ", listDetails)
               return (
                 <div
                   key={item.id}
@@ -349,7 +350,7 @@ export const GiftList = () => {
                     id={item.id}
                     findid={findID}
                     list_id={giftListID}
-                    user_id={state_id}
+                    user_id={listDetails.user_id}
                     img={item.id + ".png"}
                     desc={item.description}
                     price={item.price}

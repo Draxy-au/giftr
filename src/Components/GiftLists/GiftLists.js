@@ -64,7 +64,6 @@ export const GiftLists = () => {
     if (loggedIn) {
       var b = new Buffer.from(slist_id.toString());
       var s = b.toString("base64");
-
       history.push(`/giftlist/${s}`);
     } else {
       history.push("/login");
