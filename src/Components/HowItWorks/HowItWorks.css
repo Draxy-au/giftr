@@ -1,0 +1,14 @@
+.how {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.how img {
+  border: 1px solid #fff;
+}
+
+p {
+  text-align: center;
+}
