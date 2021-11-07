@@ -57,7 +57,6 @@
 }
 
 .btnCoffee-l {
-  
   background-color: rgb(177, 162, 112);
   border-color: rgb(167, 146, 122);
 }
@@ -83,6 +82,34 @@
   background-color: rgb(133, 102, 64);
   border-color: rgb(165, 112, 51);
   box-shadow: 0 0 0 .2rem rgba(252, 145, 23, 0.5)
+}
+
+.btnCoffee-l-red {
+  background-color: rgb(177, 116, 112);
+  border-color: rgb(145, 95, 92);
+}
+
+.btnCoffee-l-red:hover {
+  background-color: rgb(145, 95, 92);
+  border-color: rgb(177, 116, 112);
+}
+
+.btnCoffee-l-red:active {
+  background-color: rgb(145, 95, 92);
+  border-color: rgbrgb(177, 116, 112);
+  box-shadow: 0 0 0 .2rem rgba(145, 95, 92, 0.5)
+}
+
+.btnCoffee-l-red:visited {
+  background-color: rgb(145, 95, 92);
+  border-color: rgb(177, 116, 112);
+  box-shadow: 0 0 0 .2rem rgba(145, 95, 92, 0.5)
+}
+
+.btnCoffee-l-red:focus, .btnCoffee-l-red:active:focus {
+  background-color: rgb(145, 95, 92);
+  border-color: rgb(177, 116, 112);
+  box-shadow: 0 0 0 .2rem rgba(145, 95, 92, 0.5)
 }
 
 .title {

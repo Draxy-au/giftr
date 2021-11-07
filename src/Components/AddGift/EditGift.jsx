@@ -26,11 +26,7 @@ export const EditGift = () => {
   const [newItemImagePath, setNewItemImagePath] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [regServerErrors, setRegServerError] = useState([]);
-
-  console.log("What is set in the state: ", newItemImagePath);
-
   const history = useHistory();
-
   const list_id = useSelector((state) => state.user.selectedGiftList);
   const listitem_id = useSelector((state) => state.user.selectedGiftListItem);
 
@@ -63,12 +59,9 @@ export const EditGift = () => {
     };
 
     try {
-      const response = await api.put(`/listitem/${listitem_id}`, updatedItem);
-      console.log(response)
-
+      await api.put(`/listitem/${listitem_id}`, updatedItem);
       history.push('/giftlist');
     } catch (err) {
-      console.log(err)
       if (err.response.data.errors) {
         return setRegServerError(err.response.data.errors);
       } else {
