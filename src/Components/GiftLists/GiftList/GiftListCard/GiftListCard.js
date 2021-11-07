@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import "./GiftListCard.css";
 import api from "../../../../api/user.api";
+import axios from "axios";
 
 export const GiftListCard = ({
   id,
@@ -18,14 +19,16 @@ export const GiftListCard = ({
   findid,
   user_id,
   list_id,
+  handleDeleteUpdate,
 }) => {
   const [showButtons, setShowButtons] = useState(false);
   const [listOwner, setListOwner] = useState(false);
+  const [currentItem, setCurrentItem] = useState(0);
 
   const state_id = useSelector((state) => state.user.id);
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
-  const image_path = findid ? "../images/" + img : "images/" + img;
+  const image_path = img;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -62,6 +65,11 @@ export const GiftListCard = ({
     await dispatch(setSelectedGiftListItem({ id }));
     history.push("/giftlistitem");
   };
+
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:3001/api/v1/listitem/${id}`)
+    handleDeleteUpdate();
+  }
 
   const handleReserveClick = async () => {
     if (loggedIn) {
@@ -131,7 +139,7 @@ export const GiftListCard = ({
               </button>
               <button
                 className="btnCoffee btn-acard-del"
-                onClick={() => alert("Delete")}
+                onClick={() => handleDelete(id)}
               >
                 Delete
               </button>

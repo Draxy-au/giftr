@@ -9,6 +9,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import "./AddGift.css";
 import api from "../../api/user.api";
 import newItemSchema from "../../schemas/newItem.schema";
+import axios from 'axios';
 
 import { useHistory } from 'react-router';
 
@@ -34,29 +35,17 @@ export const AddGift = () => {
   });
 
   const submitForm = async (formData) => {
-
-    const newItem = {
-      list_id: list_id,
-      name: formData.name,
-      price: formData.price,
-      description: formData.description,
-      url: formData.url,
-      image_path: "",
-    };
-
     try {
+      const newItem = {
+        list_id: list_id,
+        name: formData.name,
+        price: formData.price,
+        description: formData.description,
+        url: formData.url,
+        image_path: newItemImagePath,
+      };
       const response = await api.post("/listitem", newItem);
-
-      if (fileName.length > 0) {
-        api.post('/upload/new', {
-          tempFileName: fileName,
-          newFileName: response.data.id + '.png',
-        });
-      } else {
-        api.post('/upload/newd', {
-          newFileName: response.data.id + '.png',
-        });
-      }
+      console.log(response);
       history.push('/giftlist');
     } catch (err) {
       if (err.response.data.errors) {
@@ -66,40 +55,29 @@ export const AddGift = () => {
         return setRegServerError([err.response.data]);
       }
     }
-
-
   }
 
   const handleImageClick = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
-    try {
-      if (newItemImagePath.length > 0) {
-
-        await api.post(`/upload/old`, {
-          tempFileName: newItemImagePath,
-        });
+    formData.append('upload_preset', 'vqjszgpd')
+    if (fileName) {
+      try {
+        const res = await axios.post('https://api.cloudinary.com/v1_1/dwmzj2q1b/image/upload', formData);
+        console.log(res);
+        const { secure_url } = res.data;
+        setNewItemImagePath(secure_url);
+      } catch (err) {
+        console.log(err);
       }
-
-      const res = await api.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      const { fileName } = res.data;
-      setNewItemImagePath('/images/temp/' + fileName);
-    } catch (err) {
-      console.log(err);
     }
   }
 
   const onChange = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
-
   }
-
 
   return (
     <>

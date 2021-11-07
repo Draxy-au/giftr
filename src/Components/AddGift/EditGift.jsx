@@ -9,6 +9,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import "./AddGift.css";
 import api from "../../api/user.api";
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 // name only here for mockup
 export const EditGift = () => {
@@ -26,6 +27,8 @@ export const EditGift = () => {
   // eslint-disable-next-line no-unused-vars
   const [regServerErrors, setRegServerError] = useState([]);
 
+  console.log("What is set in the state: ", newItemImagePath);
+
   const history = useHistory();
 
   const list_id = useSelector((state) => state.user.selectedGiftList);
@@ -38,8 +41,7 @@ export const EditGift = () => {
     await setNewItemPrice(response.data.price);
     await setNewItemDescription(response.data.description);
     await setNewItemUrl(response.data.url);
-    await setNewItemImagePath("/images/" + response.data.id + ".png");
-
+    await setNewItemImagePath(response.data.image_path);
   }
 
   useEffect(() => {
@@ -50,25 +52,20 @@ export const EditGift = () => {
   }, [listitem_id]);
 
   const handleSubmitClick = async () => {
-    await getListItem(listitem_id);
+
     const updatedItem = {
       list_id: list_id,
       name: newItemName,
       price: parseFloat(newItemPrice),
       description: newItemDescription,
       url: newItemUrl,
-      image_path: listitem_id + ".png",
+      image_path: newItemImagePath,
     };
+
     try {
       const response = await api.put(`/listitem/${listitem_id}`, updatedItem);
       console.log(response)
-      if (fileName) {
-        await api.post('/upload/new', {
-          tempFileName: fileName,
-          newFileName: response.data.id + '.png',
-        });
-        console.log("image uploaded")
-      }
+
       history.push('/giftlist');
     } catch (err) {
       console.log(err)
@@ -85,38 +82,20 @@ export const EditGift = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('upload_preset', 'vqjszgpd')
     if (fileName) {
       try {
-        const res = await api.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        console.log(res);
-        const { fileName } = res.data;
-        setNewItemImagePath('/images/temp/' + fileName);
+        const res = await axios.post('https://api.cloudinary.com/v1_1/dwmzj2q1b/image/upload', formData);
+        setNewItemImagePath(res.data.url);
       } catch (err) {
         console.log(err);
       }
     }
-    
   }
 
   const handleRemoveImageClick = async (e) => {
     e.preventDefault();
-    const defaultImage = {
-      newFileName: listitem_id + '.png',
-    };
-
-    console.log(defaultImage);
-    try {
-      const tester = await api.post('/upload/newd', defaultImage);
-      console.log(tester);
-      alert(tester);
-    } catch (err) {
-      console.log("error setting default image: ", err);
-    }
-    
+    setNewItemImagePath("https://res.cloudinary.com/dwmzj2q1b/image/upload/v1636250684/0_hzm4hq.png");
   }
 
   const onChange = (e) => {
@@ -143,16 +122,16 @@ export const EditGift = () => {
 
             <div className="form-group-price">
               <label htmlFor="price">Gift Price </label>
-              <div className="price-row"><div className="moneyIcon">{dollarIcon}</div><input className="form-group-price-input" type="text" id="price" name="price"  value={newItemPrice} onChange={((e) => setNewItemPrice(e.target.value))} /></div>
+              <div className="price-row"><div className="moneyIcon">{dollarIcon}</div><input className="form-group-price-input" type="text" id="price" name="price" value={newItemPrice} onChange={((e) => setNewItemPrice(e.target.value))} /></div>
             </div>
 
             <div className="form-group">
               <label htmlFor="desc">Description </label>
-              <textarea rows="3" id="desc" name="desc"  value={newItemDescription} onChange={((e) => setNewItemDescription(e.target.value))} />
+              <textarea rows="3" id="desc" name="desc" value={newItemDescription} onChange={((e) => setNewItemDescription(e.target.value))} />
             </div>
             <div className="form-group">
               <label htmlFor="url">Link to Gift (optional) </label>
-              <input type="text" id="url" name="url"  value={newItemUrl} onChange={((e) => setNewItemUrl(e.target.value))} />
+              <input type="text" id="url" name="url" value={newItemUrl} onChange={((e) => setNewItemUrl(e.target.value))} />
             </div>
             <div className="addgift-form-image">
               <label htmlFor="image">Add a Gift Image? (optional) </label>

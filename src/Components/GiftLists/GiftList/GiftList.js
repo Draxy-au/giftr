@@ -94,11 +94,16 @@ export const GiftList = () => {
       setSubd(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state_id]);
+  }, [list_id]);
+
+  useEffect(() => {
+    
+    //getList(list_id);
+  }, [listDetails.items])
 
   useEffect(() => {
     getListTitleDate();
-
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listDetails]);
 
@@ -119,6 +124,10 @@ export const GiftList = () => {
       history.push("/");
     }
   };
+
+  const handleDeleteUpdate = () => {
+    getList(list_id);
+  }
 
   const handleCardClick = (c_id) => {
     setbuttonsVisible({
@@ -347,10 +356,11 @@ export const GiftList = () => {
                     findid={findID}
                     list_id={giftListID}
                     user_id={listDetails.user_id}
-                    img={item.id + ".png"}
+                    img={item.image_path}
                     desc={item.description}
                     price={item.price}
                     url={item.url}
+                    handleDeleteUpdate={handleDeleteUpdate}
                     purchased={item.status}
                     buttonVisible={buttonsVisible}
                   />
