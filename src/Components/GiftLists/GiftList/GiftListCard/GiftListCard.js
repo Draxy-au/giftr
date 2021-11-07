@@ -23,13 +23,9 @@ export const GiftListCard = ({
 }) => {
   const [showButtons, setShowButtons] = useState(false);
   const [listOwner, setListOwner] = useState(false);
-  const [currentItem, setCurrentItem] = useState(0);
-
   const state_id = useSelector((state) => state.user.id);
   const loggedIn = useSelector((state) => state.user.loggedIn);
-
   const image_path = img;
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -67,9 +63,9 @@ export const GiftListCard = ({
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3001/api/v1/listitem/${id}`)
+    await axios.delete(`http://localhost:3001/api/v1/listitem/${id}`);
     handleDeleteUpdate();
-  }
+  };
 
   const handleReserveClick = async () => {
     if (loggedIn) {
@@ -82,16 +78,11 @@ export const GiftListCard = ({
         image_path: img,
         status: "Purchased",
       };
-      console.log(updateItemValues);
-
-      const response2 = await api.put(`/listitem/${id}`, updateItemValues);
-      console.log(response2);
-
-      const response = await api.post(`/purchase`, {
+      await api.put(`/listitem/${id}`, updateItemValues);
+      await api.post(`/purchase`, {
         user_id: user_id,
         listitem_id: id,
       });
-      console.log(response);
       history.push("/giftlists");
     } else {
       history.push("/login");
@@ -159,12 +150,14 @@ export const GiftListCard = ({
               >
                 Link
               </button>
-              {purchased && <button
-                className="btnCoffee btn-acard-chipin-o"
-                onClick={() => alert("Chip In")}
-              >
-                Chip In
-              </button>}
+              {purchased && (
+                <button
+                  className="btnCoffee btn-acard-chipin-o"
+                  onClick={() => alert("Chip In")}
+                >
+                  Chip In
+                </button>
+              )}
               {!purchased && (
                 <>
                   <button

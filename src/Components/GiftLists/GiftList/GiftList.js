@@ -13,6 +13,7 @@ import { WEBSITE_URL } from "../../../constants/api";
 import { GiftListCard } from "./GiftListCard/GiftListCard";
 import { useHistory } from "react-router";
 import { ShareList } from "./ShareList";
+import axios from "axios";
 
 export const GiftList = () => {
   const editIcon = <FontAwesomeIcon icon={faEdit} />;
@@ -58,9 +59,7 @@ export const GiftList = () => {
           response.data[0].subscriptions.map((sub) => {
             if (findid) {
               let fid = new Buffer.from(findid, "base64").toString();
-              console.log("find id: ", fid);
               if (sub.id === parseInt(fid)) {
-                console.log("found sub, setting subd true: ", sub);
                 setSubd(true);
                 return true;
               }
@@ -69,14 +68,13 @@ export const GiftList = () => {
           });
         }
       } catch (err) {
-        console.log("Wait up", err);
+        console.log(err);
       }
     }
   };
 
   useEffect(() => {
     if (findid) {
-      console.log("Found id: ", findid);
       let fid = new Buffer.from(findid, "base64").toString();
       if (findid.length < 4) {
         history.push("/");
@@ -90,7 +88,6 @@ export const GiftList = () => {
       setGiftListID(list_id);
     }
     if (state_id && subdToList(state_id) === true) {
-      console.log("Found sub apparently:");
       setSubd(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -152,7 +149,6 @@ export const GiftList = () => {
       (ncd.getMonth() + 1).toString() +
       "\\" +
       ncd.getDate().toString();
-    console.log(newClosingDate);
     await api.put(`/list/${list_id}`, {
       name: listDetails.name,
       type: listDetails.type,
@@ -187,6 +183,11 @@ export const GiftList = () => {
 
   const handleAddGiftBtn = async (li_id) => {
     history.push("/addgift");
+  };
+
+  const handleDeleteGiftListBtn = async (li_id) => {
+    await axios.delete(`http://localhost:3001/api/v1/list/${li_id}`);
+    history.push("/yourlists");
   };
 
   const handleShareGiftListBtn = async () => {
@@ -329,6 +330,12 @@ export const GiftList = () => {
                     onClick={() => handleShareGiftListBtn()}
                   >
                     Share GIFTr LIST
+                  </button>
+                  <button
+                    className="btnCoffee-l-red std-btn"
+                    onClick={() => handleDeleteGiftListBtn(list_id)}
+                  >
+                    Delete GIFTr LIST
                   </button>
                 </div>
               )}

@@ -44,8 +44,7 @@ export const AddGift = () => {
         url: formData.url,
         image_path: newItemImagePath,
       };
-      const response = await api.post("/listitem", newItem);
-      console.log(response);
+      await api.post("/listitem", newItem);
       history.push('/giftlist');
     } catch (err) {
       if (err.response.data.errors) {
@@ -65,9 +64,8 @@ export const AddGift = () => {
     if (fileName) {
       try {
         const res = await axios.post('https://api.cloudinary.com/v1_1/dwmzj2q1b/image/upload', formData);
-        console.log(res);
-        const { secure_url } = res.data;
-        setNewItemImagePath(secure_url);
+        const { url } = res.data;
+        setNewItemImagePath(url);
       } catch (err) {
         console.log(err);
       }
