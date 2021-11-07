@@ -18,8 +18,9 @@ export const GiftListCard = ({
   purchased,
   findid,
   user_id,
+  cuser_id,
   list_id,
-  handleDeleteUpdate,
+  handleUpdate,
 }) => {
   const [showButtons, setShowButtons] = useState(false);
   const [listOwner, setListOwner] = useState(false);
@@ -64,7 +65,7 @@ export const GiftListCard = ({
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3001/api/v1/listitem/${id}`);
-    handleDeleteUpdate();
+    handleUpdate();
   };
 
   const handleReserveClick = async () => {
@@ -78,12 +79,16 @@ export const GiftListCard = ({
         image_path: img,
         status: "Purchased",
       };
-      await api.put(`/listitem/${id}`, updateItemValues);
-      await api.post(`/purchase`, {
-        user_id: user_id,
-        listitem_id: id,
-      });
-      history.push("/giftlists");
+      try {
+        await api.put(`/listitem/${id}`, updateItemValues);
+        await api.post(`/purchase`, {
+          user_id: cuser_id,
+          listitem_id: id,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      handleUpdate();
     } else {
       history.push("/login");
     }

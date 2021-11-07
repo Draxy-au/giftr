@@ -18,7 +18,7 @@ import { GiftList } from "./Components/GiftLists/GiftList/GiftList";
 import { AddGift } from "./Components/AddGift/AddGift";
 import { EditGift } from "./Components/AddGift/EditGift";
 import { GiftListItemInfo } from "./Components/GiftLists/GiftList/GiftListItemInfo/GiftListItemInfo";
-import { Test } from "./Components/Test/Test";
+
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -64,9 +64,6 @@ function App() {
         <NavigationBar />
         <div className="lead">
           <Switch>
-            <Route exact path="/test">
-              <Test />
-            </Route>
             <Route exact path="/login">
               <Login />
             </Route>

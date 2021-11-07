@@ -122,8 +122,8 @@ export const GiftList = () => {
     }
   };
 
-  const handleDeleteUpdate = () => {
-    getList(list_id);
+  const handleUpdate = () => {
+    findID?getList(findID):getList(list_id);
   }
 
   const handleCardClick = (c_id) => {
@@ -363,11 +363,12 @@ export const GiftList = () => {
                     findid={findID}
                     list_id={giftListID}
                     user_id={listDetails.user_id}
+                    cuser_id={state_id}
                     img={item.image_path}
                     desc={item.description}
                     price={item.price}
                     url={item.url}
-                    handleDeleteUpdate={handleDeleteUpdate}
+                    handleUpdate={handleUpdate}
                     purchased={item.status}
                     buttonVisible={buttonsVisible}
                   />

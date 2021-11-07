@@ -46,7 +46,6 @@ export const GiftLists = () => {
 
   const getUserPurchases = async () => {
     const response = await api.get(`/user/purchases/${id}`);
-
     if (response.data.length > 0) {
       setUserPurchases(response.data[0].purchases);
     }
